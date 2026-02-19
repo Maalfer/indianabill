@@ -1,0 +1,165 @@
+/* HomePage-specific styles */
+
+/* Description section */
+.home-description {
+    background: var(--color-white);
+    padding: 4rem 0;
+}
+
+.home-description__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.home-description__content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+}
+
+.home-description__content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Party cards section */
+.home-party-cards {
+    background: var(--color-bg-light);
+    padding: 4rem 0;
+}
+
+.party-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Video section */
+.home-video {
+    background: var(--color-white);
+    padding: 4rem 0;
+}
+
+.video-container {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.video-iframe {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .party-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .home-description__content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Schedule section */
+.home-schedule {
+    background: var(--color-bg);
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.schedule-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.25rem 0.75rem;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border-bottom: 3px solid var(--color-green);
+    transition: var(--transition);
+}
+
+.schedule-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.schedule-card--closed {
+    opacity: 0.45;
+    border-bottom-color: var(--color-gray);
+}
+
+.schedule-card__day {
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-gray);
+}
+
+.schedule-card__hours {
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-green);
+    text-align: center;
+}
+
+.schedule-card__hours--closed {
+    color: var(--color-gray);
+}
+
+/* WhatsApp CTA */
+.home-cta {
+    background: var(--color-green);
+    padding: 3.5rem 0;
+}
+
+.home-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.home-cta h2 {
+    color: var(--color-white);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    margin-bottom: 0.5rem;
+}
+
+.home-cta p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 760px) {
+    .schedule-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 540px) {
+    .schedule-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home-cta__inner {
+        flex-direction: column;
+        text-align: center;
+    }
+}

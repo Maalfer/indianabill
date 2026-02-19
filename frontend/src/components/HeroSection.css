@@ -1,0 +1,118 @@
+.hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--color-white);
+    padding: 6rem 0 4rem;
+}
+
+.hero__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.18;
+    pointer-events: none;
+}
+
+.hero__blob--1 {
+    width: 600px;
+    height: 600px;
+    background: var(--color-green);
+    top: -200px;
+    right: -200px;
+}
+
+.hero__blob--2 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-yellow);
+    bottom: -150px;
+    left: -150px;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+.hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-green-light);
+    color: var(--color-green-dark);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.4rem 1.1rem;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 168, 81, 0.2);
+}
+
+.hero__heading {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: var(--font-weight-extra);
+    line-height: 1.1;
+    max-width: 800px;
+    color: var(--color-black);
+}
+
+.hero__sub {
+    font-size: 1.15rem;
+    color: var(--color-gray);
+    max-width: 560px;
+    line-height: 1.7;
+}
+
+.hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+/* Stats bar */
+.hero__stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.hero__stat strong {
+    font-size: 1.8rem;
+    font-weight: var(--font-weight-extra);
+    color: var(--color-green);
+}
+
+.hero__stat span {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 600px) {
+    .hero__stats {
+        gap: 1.5rem;
+    }
+
+    .hero__stat strong {
+        font-size: 1.4rem;
+    }
+}

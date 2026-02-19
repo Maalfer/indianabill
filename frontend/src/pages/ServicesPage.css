@@ -1,0 +1,111 @@
+/* Services Hero */
+.services-hero {
+    background: linear-gradient(135deg, var(--color-green-light) 0%, var(--color-white) 60%);
+    padding: 5rem 0 3rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.services-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--color-green);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.services-hero h1 {
+    margin-bottom: 0.75rem;
+}
+
+.services-hero p {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+}
+
+/* Detailed section */
+.services-detail {
+    background: var(--color-bg);
+}
+
+.services-detail__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.detail-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    border-left: 5px solid var(--card-accent, var(--color-green));
+    transition: var(--transition);
+}
+
+.detail-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.detail-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.detail-card__icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.detail-card__header h3 {
+    font-size: 1.25rem;
+    line-height: 1.2;
+}
+
+.detail-card__price {
+    font-size: 0.9rem;
+    color: var(--card-accent, var(--color-green));
+    font-weight: var(--font-weight-bold);
+}
+
+.detail-card__desc {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+}
+
+.detail-card__features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.detail-card__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--color-dark);
+}
+
+.detail-card__features li span {
+    color: var(--color-green);
+    font-weight: var(--font-weight-bold);
+    flex-shrink: 0;
+}
+
+@media (max-width: 760px) {
+    .services-detail__grid {
+        grid-template-columns: 1fr;
+    }
+}
