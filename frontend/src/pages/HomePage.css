@@ -12,6 +12,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    align-items: start;
 }
 
 .faq-item {
@@ -21,6 +22,7 @@
     overflow: hidden;
     transition: all 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.06);
+    align-self: start;
 }
 
 .faq-item:hover {
