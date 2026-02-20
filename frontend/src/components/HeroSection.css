@@ -1,11 +1,11 @@
 .hero {
-    min-height: 92vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
     background: var(--color-white);
-    padding: 6rem 0 4rem;
+    padding: 6rem 0 2rem;
 }
 
 .hero__blob {
@@ -65,9 +65,11 @@
 
 .hero__sub {
     font-size: 1.15rem;
-    color: var(--color-gray);
-    max-width: 560px;
-    line-height: 1.7;
+    color: var(--color-black);
+    max-width: 800px;
+    line-height: 1.8;
+    text-align: left;
+    margin-bottom: 1rem;
 }
 
 .hero__actions {
@@ -78,41 +80,67 @@
     margin-top: 0.5rem;
 }
 
-/* Stats bar */
-.hero__stats {
+/* Cards */
+.hero__cards {
     display: flex;
-    gap: 3rem;
-    margin-top: 3rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.hero__stat {
+.hero__card_btn {
+    background: var(--color-green);
+    color: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.2rem;
+    justify-content: center;
+    min-width: 260px;
+    box-shadow: 0 4px 15px rgba(0, 168, 81, 0.2);
 }
 
-.hero__stat strong {
-    font-size: 1.8rem;
-    font-weight: var(--font-weight-extra);
-    color: var(--color-green);
+.hero__card_btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 168, 81, 0.3);
 }
 
-.hero__stat span {
-    font-size: 0.85rem;
-    color: var(--color-gray);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+.hero__card_btn--secondary {
+    background: var(--color-yellow);
+    color: var(--color-black);
+    box-shadow: 0 4px 15px rgba(245, 166, 35, 0.2);
+}
+
+.hero__card_btn--secondary:hover {
+    box-shadow: 0 8px 25px rgba(245, 166, 35, 0.3);
+}
+
+.hero__card_content h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-bold);
+    color: inherit;
+}
+
+.hero__card_content span {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-top: 0.4rem;
+    display: block;
 }
 
 @media (max-width: 600px) {
-    .hero__stats {
-        gap: 1.5rem;
+    .hero__cards {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
     }
 
-    .hero__stat strong {
-        font-size: 1.4rem;
+    .hero__card_btn {
+        width: 100%;
     }
 }

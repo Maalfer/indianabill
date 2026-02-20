@@ -8,9 +8,10 @@ export default function PartyCard({
     buttonHref = '/servicios',
     overlayColor = 'blue',
     backgroundImage,
+    className = '',
 }) {
     return (
-        <div className={`party-card party-card--${overlayColor}`}>
+        <div className={`party-card party-card--${overlayColor} ${className}`.trim()}>
             <div className="party-card__background">
                 {backgroundImage && (
                     <img src={backgroundImage} alt={title} className="party-card__image" />

@@ -6,11 +6,6 @@ import './HeroSection.css'
  */
 export default function HeroSection({
     heading = 'Ven a disfrutar con tus amigos al Indiana Bill',
-    subheading = 'Más de 1300 m² de diversión en el centro de Gijón. Cumpleaños, fiestas y mucho más.',
-    ctaText = 'Ver servicios',
-    ctaHref = '/servicios',
-    secondText = 'Contáctanos',
-    secondHref = '/contacto',
 }) {
     return (
         <section className="hero">
@@ -21,30 +16,15 @@ export default function HeroSection({
             <div className="container hero__content">
                 <span className="hero__badge">🎉 Diversión para todas las edades</span>
                 <h1 className="hero__heading fade-up">{heading}</h1>
-                <p className="hero__sub fade-up">{subheading}</p>
 
-                <div className="hero__actions fade-up">
-                    <Button href={ctaHref} variant="primary" size="lg">
-                        {ctaText}
-                    </Button>
-                    <Button href={secondHref} variant="outline" size="lg">
-                        {secondText}
-                    </Button>
-                </div>
+                <p className="hero__sub fade-up">
+                    En el <strong>Indiana Bill de Gijón</strong> encontrarás todo lo que necesitas para divertirte. <strong>Celebraciones de cumpleaños o eventos especiales para adultos en un local de más de 1300 metros cuadrados situado en el centro de la ciudad.</strong> Toboganes, parque de bolas, pista de fútbol, cafetería o comedor…
+                </p>
+                <p className="hero__sub fade-up">
+                    Todo lo que buscas para tener un recuerdo inolvidable, está aquí.
+                </p>
 
-                {/* Stats bar */}
-                <div className="hero__stats">
-                    {[
-                        { label: 'Metros cuadrados', value: '+1300 m²' },
-                        { label: 'Años de experiencia', value: '+10 años' },
-                        { label: 'Familias felices', value: '+5000' },
-                    ].map(({ label, value }) => (
-                        <div key={label} className="hero__stat">
-                            <strong>{value}</strong>
-                            <span>{label}</span>
-                        </div>
-                    ))}
-                </div>
+
             </div>
         </section>
     )

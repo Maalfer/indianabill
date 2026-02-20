@@ -1,4 +1,4 @@
-"""
+r"""
 run.py — Script de arranque del servidor FastAPI.
 
 Uso:

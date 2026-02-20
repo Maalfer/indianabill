@@ -6,6 +6,22 @@
     display: flex;
     align-items: flex-end;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid var(--color-black);
+}
+
+.party-card .btn {
+    background: var(--color-white);
+    color: var(--color-black);
+    border: 3px solid var(--color-black);
+    border-radius: 0;
+    font-weight: 800;
+    text-decoration: underline;
+    padding: 0.6rem 2rem;
+}
+
+.party-card .btn:hover {
+    background: var(--color-light-gray);
+    transform: translateY(-2px);
 }
 
 .party-card:hover {
@@ -54,11 +70,55 @@
     background: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.8));
 }
 
+.party-card--green .party-card__image {
+    filter: sepia(1) hue-rotate(65deg) saturate(3) brightness(0.9);
+}
+
+.party-card--green .party-card__overlay {
+    background: rgba(0, 168, 81, 0.7);
+}
+
+.party-card--banner {
+    height: 180px;
+    align-items: center;
+    border-radius: var(--radius-md);
+}
+
+.party-card--banner .party-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.party-card--banner .party-card__title {
+    margin-bottom: 0.75rem;
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.party-card--banner .btn {
+    background: var(--color-white);
+    color: var(--color-black);
+    border: 3px solid var(--color-black);
+    border-radius: 50px;
+    font-weight: 800;
+    text-decoration: underline;
+    padding: 0.6rem 2.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.party-card--banner .btn:hover {
+    background: var(--color-light-gray);
+    transform: translateY(-2px);
+}
+
 .party-card__content {
     position: relative;
     z-index: 3;
     padding: 2rem;
-    color: white;
+    color: var(--color-black);
     text-align: center;
     width: 100%;
 }
@@ -67,7 +127,7 @@
     font-size: 2rem;
     font-weight: 700;
     margin: 0 0 1rem 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: none;
 }
 
 .party-card__description {
@@ -82,15 +142,15 @@
     .party-card {
         height: 350px;
     }
-    
+
     .party-card__title {
         font-size: 1.5rem;
     }
-    
+
     .party-card__description {
         font-size: 1rem;
     }
-    
+
     .party-card__content {
         padding: 1.5rem;
     }
