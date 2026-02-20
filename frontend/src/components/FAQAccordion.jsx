@@ -10,7 +10,7 @@ export default function FAQAccordion({ items = [] }) {
     const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
 
     return (
-        <ul className="faq">
+        <ul className="faq-grid">
             {items.map((item, i) => (
                 <li key={i} className={`faq__item${openIndex === i ? ' faq__item--open' : ''}`}>
                     <button

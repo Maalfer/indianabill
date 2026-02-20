@@ -144,5 +144,12 @@ def get_faq() -> FAQResponse:
                     "el espacio está supervisado en todo momento."
                 ),
             ),
+            FAQItem(
+                pregunta="¿Qué incluye la celebración de cumpleaños?",
+                respuesta=(
+                    "Nuestras celebraciones de cumpleaños incluyen acceso a todas las instalaciones, monitor especializado, música ambientada, y opciones de menús adaptados a todas las edades y necesidades alimenticias. "
+                    "También disponemos de packs adicionales como decoración temática, animación y fotografía profesional para hacer tu fiesta aún más especial."
+                ),
+            ),
         ]
     )
