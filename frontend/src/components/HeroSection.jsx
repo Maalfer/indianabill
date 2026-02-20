@@ -14,7 +14,6 @@ export default function HeroSection({
             <div className="hero__blob hero__blob--2" aria-hidden="true" />
 
             <div className="container hero__content">
-                <span className="hero__badge">🎉 Diversión para todas las edades</span>
                 <h1 className="hero__heading fade-up">{heading}</h1>
 
                 <p className="hero__sub fade-up">
