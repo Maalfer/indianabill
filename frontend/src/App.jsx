@@ -7,7 +7,7 @@ import NotFoundPage from './pages/NotFoundPage'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/indianabill/">
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
