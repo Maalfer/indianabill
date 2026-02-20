@@ -54,14 +54,14 @@ export default function HomePage() {
                             overlayColor="blue"
                             buttonText="Clic para saber más"
                             buttonHref="/servicios"
-                            backgroundImage="/fondo.jpg"
+                            backgroundImage={`${import.meta.env.BASE_URL}fondo.jpg`}
                         />
                         <PartyCard
                             title="Fiestas para adultos"
                             overlayColor="red"
                             buttonText="Clic para saber más"
                             buttonHref="/servicios"
-                            backgroundImage="/fondo.jpg"
+                            backgroundImage={`${import.meta.env.BASE_URL}fondo.jpg`}
                         />
                     </div>
                 </div>
@@ -94,7 +94,7 @@ export default function HomePage() {
                             overlayColor="green"
                             buttonText="Clic para escribirnos"
                             buttonHref="https://wa.me/34984000000"
-                            backgroundImage="/fondo.jpg"
+                            backgroundImage={`${import.meta.env.BASE_URL}fondo.jpg`}
                             className="party-card--banner"
                         />
                     </div>

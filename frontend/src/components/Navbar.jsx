@@ -25,7 +25,7 @@ export default function Navbar() {
             <div className="container navbar__inner">
                 {/* Logo */}
                 <NavLink to="/" className="navbar__logo" onClick={close}>
-                    <img src="/logo.png" alt="Indiana Bill" className="navbar__logo-icon" />
+                    <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Indiana Bill" className="navbar__logo-icon" />
                     <span className="navbar__logo-text">
                         Indiana<strong>Bill</strong>
                     </span>

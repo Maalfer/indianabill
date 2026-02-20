@@ -9,7 +9,7 @@ export default function Footer() {
             <div className="footer__inner">
                 {/* Brand */}
                 <div className="footer__brand">
-                    <img src="/logo.png" alt="Indiana Bill" className="footer__logo-icon" />
+                    <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Indiana Bill" className="footer__logo-icon" />
                     <p className="footer__brand-name">Indiana<strong>Bill</strong> Gijón</p>
                     <p className="footer__tagline">
                         Más de 1300 m² de diversión en el centro de Gijón.
