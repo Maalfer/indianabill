@@ -11,7 +11,6 @@ const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 export default function HomePage() {
     const [servicios, setServicios] = useState([])
     const [faq, setFaq] = useState([])
-    const [horario, setHorario] = useState(null)
     const [expandedItems, setExpandedItems] = useState({})
 
     useEffect(() => {
@@ -23,11 +22,6 @@ export default function HomePage() {
         fetch(`${API}/api/faq`)
             .then((r) => r.json())
             .then((d) => setFaq(d.items))
-            .catch(() => { })
-
-        fetch(`${API}/api/horario`)
-            .then((r) => r.json())
-            .then(setHorario)
             .catch(() => { })
     }, [])
 
@@ -132,36 +126,20 @@ export default function HomePage() {
             </section>
 
             {/* ── HORARIO ──────────────────────────────────────────────── */}
-            {horario && (
-                <section className="section home-schedule">
-                    <div className="container">
-                        <header className="section-header">
-                            <h2>Horario</h2>
-                            <p>{horario.nota}</p>
-                            <div className="divider" />
-                        </header>
-                        <div className="schedule-grid">
-                            {horario.horario.map((d) => (
-                                <div
-                                    key={d.dia}
-                                    className={`schedule-card${d.abierto ? '' : ' schedule-card--closed'}`}
-                                >
-                                    <span className="schedule-card__day">{d.dia}</span>
-                                    {d.abierto ? (
-                                        <span className="schedule-card__hours">
-                                            {d.apertura} – {d.cierre}
-                                        </span>
-                                    ) : (
-                                        <span className="schedule-card__hours schedule-card__hours--closed">
-                                            Cerrado
-                                        </span>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
+            <section className="section home-schedule-static">
+                <div className="container">
+                    <header className="section-header home-schedule-static__header">
+                        <h2>HORARIO</h2>
+                        <div className="divider" />
+                    </header>
+                    <div className="home-schedule-static__content">
+                        <p>Lunes cerrado por descanso (excepto vísperas y festivos)</p>
+                        <p>Martes y Jueves de 17:00 a 21:00</p>
+                        <p>Viernes, Sábado y Vísperas de 17:00 a 21:30</p>
+                        <p>Domingo y festivos de 17:00 a 21:00</p>
                     </div>
-                </section>
-            )}
+                </div>
+            </section>
 
             {/* ── CTA WHATSAPP ─────────────────────────────────────────── */}
             <section className="home-cta">
