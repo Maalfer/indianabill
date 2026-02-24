@@ -113,6 +113,36 @@ export default function HomePage() {
                 </div>
             </section>
 
+            <section className="section home-short-videos">
+                <div className="container">
+                    <div className="short-videos-container">
+                        <div className="short-videos-grid">
+                            <video
+                                className="short-video"
+                                src="https://www.indianabilldegijon.es/wp-content/uploads/2020/10/48789635_117694950095221_3144007622461847823_n.mp4"
+                                autoPlay muted loop
+                                playsInline
+                                preload="metadata"
+                            />
+                            <video
+                                className="short-video"
+                                src="https://www.indianabilldegijon.es/wp-content/uploads/2020/10/47354649_130731465055010_849112413659951726_n.mp4"
+                                autoPlay muted loop
+                                playsInline
+                                preload="metadata"
+                            />
+                            <video
+                                className="short-video"
+                                src="https://www.indianabilldegijon.es/wp-content/uploads/2020/10/107696883_774992853242507_1686557807320756955_n.mp4"
+                                autoPlay muted loop
+                                playsInline
+                                preload="metadata"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* ── PREGUNTAS FRECUENTES ─────────────────────────────────────────── */}
             <section className="section home-faq" id="preguntas-frecuentes">
                 <div className="container">
