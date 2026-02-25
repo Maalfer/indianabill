@@ -6,6 +6,7 @@ const NAV_LINKS = [
     { to: '/', label: 'Inicio' },
     { to: '/servicios', label: 'Servicios' },
     { to: '/cumpleanos', label: 'Cumpleaños' },
+    { to: '/adultos', label: 'Adolescentes y adultos' },
     { to: '/contacto', label: 'Contacto' },
 ]
 
