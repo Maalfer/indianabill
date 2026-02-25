@@ -125,6 +125,14 @@ instance/
 .venv/
 venv/
 ENV/
+env.bak/
+venv.bak/
+
+# Backend virtual environment
+backend/venv/
+backend/.venv/
+backend/env/
+backend/ENV/
 
 # Database
 *.db
