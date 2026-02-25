@@ -168,6 +168,10 @@ export default function CumpleanosPage() {
             {/* Info */}
             <section className="section cumpleanos-info">
                 <div className="container">
+                    <header className="section-header">
+                        <h2>Preguntas Frecuentes</h2>
+                        <div className="divider" />
+                    </header>
                     <div className="info-card">
                         <h3>¿Para qué edades?</h3>
                         <p>
