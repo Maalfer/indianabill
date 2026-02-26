@@ -34,6 +34,24 @@ export default function CumpleanosPage() {
                 </div>
             </section>
 
+            {/* ── YOUTUBE VIDEO ─────────────────────────────────────────── */}
+            <section className="section home-video">
+                <div className="container">
+                    <div className="video-container">
+                        <iframe
+                            width="100%"
+                            height="500"
+                            src="https://www.youtube.com/embed/llKb4NkS2tU"
+                            title="Indiana Bill Gijón Video"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="video-iframe"
+                        ></iframe>
+                    </div>
+                </div>
+            </section>
+
             {/* How to reserve */}
             <section className="section cumpleanos-reserva">
                 <div className="container">
@@ -127,6 +145,10 @@ export default function CumpleanosPage() {
                     <div className="menus-images">
                         <img src="/menu1.png" alt="Menú de cumpleaños Indy" className="menus-images__img" />
                         <img src="/menu2.png" alt="Menú de cumpleaños Super Indy" className="menus-images__img" />
+                    </div>
+
+                    <div className="menu-alergenos">
+                        <img src="/menuAlergenos.jpg" alt="Información de alérgenos" className="menu-alergenos__img" />
                     </div>
                 </div>
             </section>
