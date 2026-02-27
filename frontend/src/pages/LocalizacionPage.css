@@ -1,0 +1,364 @@
+/* Localización Page Styles */
+
+/* Hero Section */
+.localizacion-hero {
+    background: linear-gradient(135deg, var(--color-green-light) 0%, var(--color-white) 60%);
+    padding: 5rem 0 3rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.localizacion-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--color-green);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.localizacion-hero h1 {
+    margin-bottom: 0.75rem;
+}
+
+.localizacion-hero p {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Introduction Section */
+.localizacion-intro {
+    background: var(--color-white);
+}
+
+.localizacion-intro__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.localizacion-intro__content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-green);
+}
+
+.localizacion-intro__content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 0;
+}
+
+/* Parking Section */
+.localizacion-parking {
+    background: var(--color-bg-light);
+}
+
+.parking-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.parking-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border-left: 5px solid var(--color-green);
+}
+
+.parking-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.parking-card.featured {
+    border-left: 5px solid var(--color-primary);
+    transform: scale(1.02);
+}
+
+.parking-card.featured:hover {
+    transform: scale(1.02) translateY(-4px);
+}
+
+.parking-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.parking-card__icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.parking-card__header h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    flex: 1;
+}
+
+.parking-card__distance {
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-green);
+    white-space: nowrap;
+    padding: 0.25rem 0.75rem;
+    background: rgba(0, 200, 0, 0.1);
+    border-radius: 20px;
+}
+
+.parking-card.featured .parking-card__distance {
+    color: var(--color-primary);
+    background: rgba(0, 123, 255, 0.1);
+}
+
+.parking-card__content p {
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.parking-card__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.parking-feature {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg-light);
+    color: var(--color-gray);
+    border-radius: 15px;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Bus Section */
+.localizacion-bus {
+    background: var(--color-white);
+}
+
+.bus-stops {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bus-stop {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border-bottom: 3px solid var(--color-green);
+}
+
+.bus-stop:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.bus-stop__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.bus-stop__icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.bus-stop__header h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: var(--color-black);
+}
+
+.bus-stop__lines h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+}
+
+.bus-lines {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.bus-line {
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.5rem 1rem;
+    background: var(--color-green);
+    color: white;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.bus-line:hover {
+    background: var(--color-green-dark);
+    transform: scale(1.05);
+}
+
+/* Map Section */
+.localizacion-mapa {
+    background: var(--color-bg-light);
+}
+
+.map-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.map-iframe-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+}
+
+.map-iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+
+.map-info {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.map-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+}
+
+.map-info p {
+    color: var(--color-gray);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.map-info p:last-child {
+    margin-bottom: 2rem;
+}
+
+/* CTA Section */
+.localizacion-cta {
+    background: var(--color-green);
+    padding: 4rem 0;
+}
+
+.localizacion-cta__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.localizacion-cta h2 {
+    color: var(--color-white);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    margin-bottom: 0.5rem;
+}
+
+.localizacion-cta p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .parking-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .bus-stops {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .localizacion-hero {
+        padding: 3rem 0 2rem;
+    }
+    
+    .parking-card__header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+    
+    .parking-card.featured {
+        transform: none;
+    }
+    
+    .parking-card.featured:hover {
+        transform: translateY(-4px);
+    }
+    
+    .bus-stop__header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+    
+    .bus-lines {
+        justify-content: center;
+    }
+    
+    .localizacion-cta__content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 540px) {
+    .parking-card__features {
+        justify-content: center;
+    }
+    
+    .bus-lines {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+}
