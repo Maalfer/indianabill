@@ -99,7 +99,7 @@ export default function Navbar() {
                                     <NavLink
                                         to="/register"
                                         className={({ isActive }) =>
-                                            `navbar__link navbar__register${isActive ? ' navbar__link--active' : ''}`
+                                            `navbar__link${isActive ? ' navbar__link--active' : ''}`
                                         }
                                     >
                                         Registrarse
@@ -182,7 +182,7 @@ export default function Navbar() {
                                 <NavLink
                                     to="/register"
                                     className={({ isActive }) =>
-                                        `navbar__drawer-link navbar__drawer-register${isActive ? ' navbar__drawer-link--active' : ''}`
+                                        `navbar__drawer-link${isActive ? ' navbar__drawer-link--active' : ''}`
                                     }
                                     onClick={close}
                                 >
