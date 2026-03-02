@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import './Navbar.css'
 
 const NAV_LINKS = [
@@ -14,6 +15,8 @@ const NAV_LINKS = [
 export default function Navbar() {
     const [open, setOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const { user, isAuthenticated, logout, loading } = useAuth()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 50)
@@ -22,6 +25,12 @@ export default function Navbar() {
     }, [])
 
     const close = () => setOpen(false)
+
+    const handleLogout = () => {
+        logout()
+        navigate('/')
+        close()
+    }
 
     return (
         <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
@@ -48,14 +57,57 @@ export default function Navbar() {
                             {label}
                         </NavLink>
                     ))}
-                    <a
-                        href="https://wa.me/34984000000"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="navbar__cta"
-                    >
-                        Reservar ahora
-                    </a>
+                    
+                    {/* Auth buttons */}
+                    {!loading && (
+                        <>
+                            {isAuthenticated ? (
+                                <>
+                                    <NavLink
+                                        to="/dashboard"
+                                        className={({ isActive }) =>
+                                            `navbar__link${isActive ? ' navbar__link--active' : ''}`
+                                        }
+                                    >
+                                        Dashboard
+                                    </NavLink>
+                                    <NavLink
+                                        to="/profile"
+                                        className={({ isActive }) =>
+                                            `navbar__link${isActive ? ' navbar__link--active' : ''}`
+                                        }
+                                    >
+                                        Perfil
+                                    </NavLink>
+                                    <button
+                                        onClick={handleLogout}
+                                        className="navbar__cta navbar__logout"
+                                    >
+                                        Cerrar Sesión
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <NavLink
+                                        to="/login"
+                                        className={({ isActive }) =>
+                                            `navbar__link${isActive ? ' navbar__link--active' : ''}`
+                                        }
+                                    >
+                                        Iniciar Sesión
+                                    </NavLink>
+                                    <NavLink
+                                        to="/register"
+                                        className={({ isActive }) =>
+                                            `navbar__link navbar__register${isActive ? ' navbar__link--active' : ''}`
+                                        }
+                                    >
+                                        Registrarse
+                                    </NavLink>
+                                </>
+                            )}
+                        </>
+                    )}
                 </nav>
 
                 {/* Hamburger */}
@@ -85,15 +137,61 @@ export default function Navbar() {
                         {label}
                     </NavLink>
                 ))}
-                <a
-                    href="https://wa.me/34984000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="navbar__cta"
-                    onClick={close}
-                >
-                    Reservar ahora
-                </a>
+                
+                {/* Mobile auth buttons */}
+                {!loading && (
+                    <>
+                        {isAuthenticated ? (
+                            <>
+                                <NavLink
+                                    to="/dashboard"
+                                    className={({ isActive }) =>
+                                        `navbar__drawer-link${isActive ? ' navbar__drawer-link--active' : ''}`
+                                    }
+                                    onClick={close}
+                                >
+                                    Dashboard
+                                </NavLink>
+                                <NavLink
+                                    to="/profile"
+                                    className={({ isActive }) =>
+                                        `navbar__drawer-link${isActive ? ' navbar__drawer-link--active' : ''}`
+                                    }
+                                    onClick={close}
+                                >
+                                    Perfil
+                                </NavLink>
+                                <button
+                                    onClick={handleLogout}
+                                    className="navbar__drawer-link navbar__drawer-logout"
+                                >
+                                    Cerrar Sesión
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <NavLink
+                                    to="/login"
+                                    className={({ isActive }) =>
+                                        `navbar__drawer-link${isActive ? ' navbar__drawer-link--active' : ''}`
+                                    }
+                                    onClick={close}
+                                >
+                                    Iniciar Sesión
+                                </NavLink>
+                                <NavLink
+                                    to="/register"
+                                    className={({ isActive }) =>
+                                        `navbar__drawer-link navbar__drawer-register${isActive ? ' navbar__drawer-link--active' : ''}`
+                                    }
+                                    onClick={close}
+                                >
+                                    Registrarse
+                                </NavLink>
+                            </>
+                        )}
+                    </>
+                )}
             </div>
         </header>
     )

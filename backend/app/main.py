@@ -7,7 +7,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import info
+from app.routers import info, auth, users
+from app.database import engine
+from app.models.user import Base
+
+# Crear tablas en la base de datos
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title=settings.app_name,
@@ -28,6 +33,8 @@ app.add_middleware(
 
 # ── Routers ───────────────────────────────────────────────────────────────────
 app.include_router(info.router)
+app.include_router(auth.router)
+app.include_router(users.router)
 
 
 # ── Health check ──────────────────────────────────────────────────────────────
