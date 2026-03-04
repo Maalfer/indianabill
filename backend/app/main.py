@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import info, auth, users
+from app.routers import info, auth, users, admin
 from app.database import engine
 from app.models.user import Base
 
@@ -35,6 +35,7 @@ app.add_middleware(
 app.include_router(info.router)
 app.include_router(auth.router)
 app.include_router(users.router)
+app.include_router(admin.router)
 
 
 # ── Health check ──────────────────────────────────────────────────────────────

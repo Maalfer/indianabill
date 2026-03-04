@@ -7,7 +7,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from datetime import timedelta
 from ..database import get_db
-from ..models.user import User
+from ..models.user import User, UserRole
 from ..schemas.user import UserCreate, UserLogin, UserResponse, Token
 from ..utils.security import verify_password, get_password_hash, create_access_token, verify_token
 from ..config import settings
@@ -60,7 +60,8 @@ def register(user_data: UserCreate, db: Session = Depends(get_db)):
     new_user = User(
         username=user_data.username,
         email=user_data.email,
-        hashed_password=hashed_password
+        hashed_password=hashed_password,
+        role=user_data.role or UserRole.USER  # Por defecto es USER si no se especifica
     )
     
     db.add(new_user)

@@ -79,6 +79,16 @@ export default function Navbar() {
                                     >
                                         Perfil
                                     </NavLink>
+                                    {user?.role === 'admin' && (
+                                        <NavLink
+                                            to="/admin"
+                                            className={({ isActive }) =>
+                                                `navbar__link${isActive ? ' navbar__link--active' : ''}`
+                                            }
+                                        >
+                                            Admin
+                                        </NavLink>
+                                    )}
                                     <button
                                         onClick={handleLogout}
                                         className="navbar__cta navbar__logout"
