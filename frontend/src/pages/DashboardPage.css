@@ -93,19 +93,27 @@
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
+  transition: var(--transition);
   display: inline-block;
-  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
 .card-button:disabled {
-  background: #ccc;
+  background: #e0e0e0;
+  color: #999;
   cursor: not-allowed;
   transform: none;
+}
+
+/* Dark theme card buttons */
+[data-theme="dark"] .card-button:disabled {
+  background: #404040;
+  color: #b0b0b0;
+  cursor: not-allowed;
 }
 
 .dashboard-info {
