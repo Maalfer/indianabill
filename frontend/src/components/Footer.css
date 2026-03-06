@@ -4,6 +4,11 @@
     margin-top: auto;
 }
 
+/* Dark theme footer background */
+[data-theme="dark"] .footer {
+    background: rgba(45, 45, 45, 0.95);
+}
+
 .footer__inner {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;

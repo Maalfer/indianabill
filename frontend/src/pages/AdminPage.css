@@ -6,6 +6,11 @@
   padding: 40px 20px;
 }
 
+/* Dark theme admin - same as homepage */
+[data-theme="dark"] .admin-page {
+  background: var(--color-white);
+}
+
 .admin-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -13,6 +18,12 @@
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+}
+
+/* Dark theme admin container - dark gray */
+[data-theme="dark"] .admin-container {
+  background: #2d2d2d;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .admin-header {
@@ -89,12 +100,35 @@
   background: #f9fafb;
 }
 
+/* Dark theme table */
+[data-theme="dark"] .users-table {
+  background: #2d2d2d;
+}
+
+[data-theme="dark"] .users-table td {
+  border-bottom-color: #404040;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .users-table tr:hover {
+  background: #3d3d3d;
+}
+
 .users-table tr.current-user {
   background: #fef3c7;
 }
 
 .users-table tr.current-user:hover {
   background: #fde68a;
+}
+
+/* Dark theme current user row */
+[data-theme="dark"] .users-table tr.current-user {
+  background: #4a4a0a;
+}
+
+[data-theme="dark"] .users-table tr.current-user:hover {
+  background: #5a5a1a;
 }
 
 .role-select {

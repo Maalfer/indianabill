@@ -16,6 +16,11 @@
     border-bottom-color: var(--color-green-light);
 }
 
+/* Dark theme navbar background */
+[data-theme="dark"] .navbar {
+    background: rgba(45, 45, 45, 0.95);
+}
+
 .navbar__inner {
     display: flex;
     align-items: center;

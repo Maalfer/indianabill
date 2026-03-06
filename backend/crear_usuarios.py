@@ -61,13 +61,13 @@ def create_test_users():
             }
         ]
         
-        print("🚀 Creando usuarios de prueba...")
+        print("Creando usuarios de prueba...")
         
         for user_data in test_users:
             # Verificar si el usuario ya existe
             existing_user = db.query(User).filter(User.email == user_data["email"]).first()
             if existing_user:
-                print(f"⚠️  El usuario {user_data['email']} ya existe. Omitiendo...")
+                print(f"El usuario {user_data['email']} ya existe. Omitiendo...")
                 continue
             
             # Crear nuevo usuario
@@ -84,17 +84,17 @@ def create_test_users():
             db.commit()
             db.refresh(new_user)
             
-            print(f"✅ Usuario creado: {new_user.username} ({new_user.email}) - Rol: {new_user.role.value}")
+            print(f"Usuario creado: {new_user.username} ({new_user.email}) - Rol: {new_user.role.value}")
         
-        print("\n📊 Resumen de usuarios creados:")
+        print("\nResumen de usuarios creados:")
         all_users = db.query(User).all()
         for user in all_users:
             print(f"   • {user.username} - {user.email} - {user.role.value}")
         
-        print(f"\n🎉 Total de usuarios en la base de datos: {len(all_users)}")
+        print(f"\nTotal de usuarios en la base de datos: {len(all_users)}")
         
     except Exception as e:
-        print(f"❌ Error al crear usuarios: {e}")
+        print(f"Error al crear usuarios: {e}")
         db.rollback()
     finally:
         db.close()
@@ -105,11 +105,11 @@ def delete_all_users():
     db = SessionLocal()
     
     try:
-        print("⚠️  ¿Estás seguro de que quieres eliminar todos los usuarios? (y/n)")
+        print("¿Estás seguro de que quieres eliminar todos los usuarios? (y/n)")
         confirm = input().lower()
         
         if confirm != 'y':
-            print("❌ Operación cancelada")
+            print("Operación cancelada")
             return
         
         # Eliminar todos los usuarios
@@ -117,10 +117,10 @@ def delete_all_users():
         db.query(User).delete()
         db.commit()
         
-        print(f"🗑️  Se eliminaron {deleted_count} usuarios de la base de datos")
+        print(f"Se eliminaron {deleted_count} usuarios de la base de datos")
         
     except Exception as e:
-        print(f"❌ Error al eliminar usuarios: {e}")
+        print(f"Error al eliminar usuarios: {e}")
         db.rollback()
     finally:
         db.close()
@@ -134,10 +134,10 @@ def show_users():
         users = db.query(User).all()
         
         if not users:
-            print("📭 No hay usuarios en la base de datos")
+            print("No hay usuarios en la base de datos")
             return
         
-        print("📋 Usuarios actuales:")
+        print("Usuarios actuales:")
         print("-" * 80)
         print(f"{'ID':<5} {'Username':<20} {'Email':<25} {'Rol':<10} {'Descripción':<30}")
         print("-" * 80)
@@ -146,15 +146,15 @@ def show_users():
             description = user.description[:27] + "..." if user.description and len(user.description) > 30 else (user.description or "")
             print(f"{user.id:<5} {user.username:<20} {user.email:<25} {user.role.value:<10} {description:<30}")
         
-        print(f"\n📊 Total: {len(users)} usuarios")
+        print(f"\nTotal: {len(users)} usuarios")
         
     except Exception as e:
-        print(f"❌ Error al mostrar usuarios: {e}")
+        print(f"Error al mostrar usuarios: {e}")
     finally:
         db.close()
 
 if __name__ == "__main__":
-    print("🎯 Script de gestión de usuarios - Indiana Bill")
+    print("Script de gestión de usuarios - Indiana Bill")
     print("=" * 50)
     
     if len(sys.argv) > 1:
@@ -167,14 +167,14 @@ if __name__ == "__main__":
         elif command == "mostrar":
             show_users()
         else:
-            print("❌ Comando no reconocido. Usar: crear, eliminar, mostrar")
+            print("Comando no reconocido. Usar: crear, eliminar, mostrar")
     else:
-        print("📖 Uso:")
+        print("Uso:")
         print("   python crear_usuarios.py crear    - Crear usuarios de prueba")
         print("   python crear_usuarios.py eliminar  - Eliminar todos los usuarios")
         print("   python crear_usuarios.py mostrar   - Mostrar usuarios actuales")
         print()
-        print("🔑 Usuarios de prueba que se crearán:")
+        print("Usuarios de prueba que se crearán:")
         print("   • admin_indiana@indianabill.com / admin123 (ADMIN)")
         print("   • carlos_admin@indianabill.com / admin456 (ADMIN)")
         print("   • juan_usuario@indianabill.com / usuario123 (USER)")

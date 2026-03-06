@@ -6,6 +6,11 @@
   padding: 40px 20px;
 }
 
+/* Dark theme profile - same as homepage */
+[data-theme="dark"] .profile-page {
+  background: var(--color-white);
+}
+
 .profile-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -43,12 +48,25 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Dark theme profile cards - dark gray */
+[data-theme="dark"] .profile-form-card,
+[data-theme="dark"] .profile-info-card {
+  background: #2d2d2d;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
 .profile-form-card h2,
 .profile-info-card h2 {
   color: #333;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;
+}
+
+/* Dark theme card titles */
+[data-theme="dark"] .profile-form-card h2,
+[data-theme="dark"] .profile-info-card h2 {
+  color: #ffffff;
 }
 
 .profile-form {
@@ -77,11 +95,30 @@
   font-size: 14px;
   transition: border-color 0.2s;
   font-family: inherit;
+  background: white;
+  color: #333;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
+  border-color: #667eea;
+}
+
+/* Dark theme form elements */
+[data-theme="dark"] .form-group label {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+  background: #404040;
+  border-color: #555555;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group textarea:focus {
   border-color: #667eea;
 }
 
@@ -94,6 +131,12 @@
   background: #f8f9fa;
   color: #666;
   cursor: not-allowed;
+}
+
+/* Dark theme disabled input */
+[data-theme="dark"] .disabled-input {
+  background: #333333;
+  color: #999999;
 }
 
 .form-help {
@@ -152,6 +195,29 @@
   align-items: center;
   padding: 12px 0;
   border-bottom: 1px solid #e1e5e9;
+}
+
+.info-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.info-value {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Dark theme info items */
+[data-theme="dark"] .info-item {
+  border-bottom-color: #404040;
+}
+
+[data-theme="dark"] .info-label {
+  color: #b0b0b0;
+}
+
+[data-theme="dark"] .info-value {
+  color: #ffffff;
 }
 
 .info-item:last-child {

@@ -35,6 +35,34 @@
   --max-width: 1100px;
 }
 
+/* Font Size Variables */
+[data-font-size="small"] {
+  --font-size-base: 14px;
+  --font-size-h1: 28px;
+  --font-size-h2: 24px;
+  --font-size-h3: 18px;
+  --font-size-h4: 16px;
+  --font-size-p: 13px;
+}
+
+[data-font-size="medium"] {
+  --font-size-base: 16px;
+  --font-size-h1: 32px;
+  --font-size-h2: 28px;
+  --font-size-h3: 20px;
+  --font-size-h4: 18px;
+  --font-size-p: 15px;
+}
+
+[data-font-size="large"] {
+  --font-size-base: 18px;
+  --font-size-h1: 36px;
+  --font-size-h2: 32px;
+  --font-size-h3: 22px;
+  --font-size-h4: 20px;
+  --font-size-p: 17px;
+}
+
 /* ── Reset & Base ────────────────────────────────────────────────────────────── */
 *,
 *::before,
@@ -46,7 +74,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: var(--font-size-base, 16px);
 }
 
 body {
@@ -86,13 +114,13 @@ h1, h2, h3, h4 {
   color: var(--color-black);
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
-h2 { font-size: clamp(1.6rem, 4vw, 2.8rem); }
-h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
-h4 { font-size: 1.1rem; }
+h1 { font-size: var(--font-size-h1, clamp(2rem, 5vw, 3.5rem)); }
+h2 { font-size: var(--font-size-h2, clamp(1.6rem, 4vw, 2.8rem)); }
+h3 { font-size: var(--font-size-h3, clamp(1.2rem, 3vw, 1.8rem)); }
+h4 { font-size: var(--font-size-h4, 1.1rem); }
 
 p {
-  font-size: 1.05rem;
+  font-size: var(--font-size-p, 1.05rem);
   color: var(--color-dark);
   line-height: 1.7;
 }
@@ -178,4 +206,33 @@ p {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] {
+  --color-green: #00D65A;
+  --color-green-dark: #00B347;
+  --color-green-light: #1a4d2e;
+  --color-black: #ffffff;
+  --color-dark: #e0e0e0;
+  --color-gray: #b0b0b0;
+  --color-light-gray: #2d2d2d;
+  --color-white: #1a1a1a;
+  --color-bg: #0d0d0d;
+}
+
+[data-theme="dark"] body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4 {
+  color: var(--color-black);
+}
+
+[data-theme="dark"] p {
+  color: var(--color-dark);
 }

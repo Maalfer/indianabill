@@ -45,9 +45,9 @@ export default function DashboardPage() {
             <div className="card-icon">⚙️</div>
             <h3>Configuración</h3>
             <p>Administra tus preferencias y configuración</p>
-            <button className="card-button" disabled>
-              Próximamente
-            </button>
+            <Link to="/config" className="card-button">
+              Configurar
+            </Link>
           </div>
         </div>
 
