@@ -143,12 +143,12 @@ export default function CumpleanosPage() {
                     </header>
 
                     <div className="menus-images">
-                        <img src="/menu1.png" alt="Menú de cumpleaños Indy" className="menus-images__img" />
-                        <img src="/menu2.png" alt="Menú de cumpleaños Super Indy" className="menus-images__img" />
+                        <img src={import.meta.env.BASE_URL + 'menu1.png'} alt="Menú de cumpleaños Indy" className="menus-images__img" />
+                        <img src={import.meta.env.BASE_URL + 'menu2.png'} alt="Menú de cumpleaños Super Indy" className="menus-images__img" />
                     </div>
 
                     <div className="menu-alergenos">
-                        <img src="/menuAlergenos.jpg" alt="Información de alérgenos" className="menu-alergenos__img" />
+                        <img src={import.meta.env.BASE_URL + 'menuAlergenos.jpg'} alt="Información de alérgenos" className="menu-alergenos__img" />
                     </div>
                 </div>
             </section>

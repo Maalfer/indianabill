@@ -292,7 +292,6 @@
 .home-schedule-static {
     position: relative;
     padding: 4rem 0;
-    background-image: url('/fondo_horario.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
