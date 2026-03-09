@@ -15,6 +15,7 @@ const NAV_LINKS = [
 export default function Navbar() {
     const [open, setOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const [profileDropdownOpen, setProfileDropdownOpen] = useState(false)
     const { user, isAuthenticated, logout, loading } = useAuth()
     const navigate = useNavigate()
 
@@ -25,11 +26,18 @@ export default function Navbar() {
     }, [])
 
     const close = () => setOpen(false)
+    const closeProfileDropdown = () => setProfileDropdownOpen(false)
 
     const handleLogout = () => {
         logout()
         navigate('/')
         close()
+        closeProfileDropdown()
+    }
+
+    const toggleProfileDropdown = (e) => {
+        e.preventDefault()
+        setProfileDropdownOpen(!profileDropdownOpen)
     }
 
     return (
@@ -64,37 +72,53 @@ export default function Navbar() {
                             {isAuthenticated ? (
                                 <>
                                     <NavLink
-                                        to="/dashboard"
+                                        to="/reservas"
                                         className={({ isActive }) =>
                                             `navbar__link${isActive ? ' navbar__link--active' : ''}`
                                         }
                                     >
-                                        Dashboard
+                                        Reservas
                                     </NavLink>
-                                    <NavLink
-                                        to="/profile"
-                                        className={({ isActive }) =>
-                                            `navbar__link${isActive ? ' navbar__link--active' : ''}`
-                                        }
-                                    >
-                                        Perfil
-                                    </NavLink>
-                                    {user?.role === 'admin' && (
-                                        <NavLink
-                                            to="/admin"
-                                            className={({ isActive }) =>
-                                                `navbar__link${isActive ? ' navbar__link--active' : ''}`
-                                            }
+                                    <div className="navbar__profile-dropdown">
+                                        <button
+                                            className="navbar__profile-button"
+                                            onClick={toggleProfileDropdown}
                                         >
-                                            Admin
-                                        </NavLink>
-                                    )}
-                                    <button
-                                        onClick={handleLogout}
-                                        className="navbar__cta navbar__logout"
-                                    >
-                                        Cerrar Sesión
-                                    </button>
+                                            Perfil
+                                            <span className={`navbar__dropdown-arrow ${profileDropdownOpen ? 'navbar__dropdown-arrow--open' : ''}`}>▼</span>
+                                        </button>
+                                        <div className={`navbar__dropdown-menu ${profileDropdownOpen ? 'navbar__dropdown-menu--open' : ''}`}>
+                                            <NavLink
+                                                to="/dashboard"
+                                                className="navbar__dropdown-item"
+                                                onClick={closeProfileDropdown}
+                                            >
+                                                Dashboard
+                                            </NavLink>
+                                            <NavLink
+                                                to="/profile"
+                                                className="navbar__dropdown-item"
+                                                onClick={closeProfileDropdown}
+                                            >
+                                                Perfil
+                                            </NavLink>
+                                            {user?.role === 'admin' && (
+                                                <NavLink
+                                                    to="/admin"
+                                                    className="navbar__dropdown-item"
+                                                    onClick={closeProfileDropdown}
+                                                >
+                                                    Admin
+                                                </NavLink>
+                                            )}
+                                            <button
+                                                onClick={handleLogout}
+                                                className="navbar__dropdown-item navbar__dropdown-item--logout"
+                                            >
+                                                Cerrar Sesión
+                                            </button>
+                                        </div>
+                                    </div>
                                 </>
                             ) : (
                                 <>

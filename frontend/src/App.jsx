@@ -14,6 +14,7 @@ import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
 import ProfilePage from './pages/ProfilePage'
 import ConfigPage from './pages/ConfigPage'
+import ReservasPage from './pages/ReservasPage'
 import AdminPage from './pages/AdminPage'
 import NotFoundPage from './pages/NotFoundPage'
 
@@ -45,6 +46,11 @@ export default function App() {
               <Route path="/config" element={
                 <ProtectedRoute>
                   <ConfigPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/reservas" element={
+                <ProtectedRoute>
+                  <ReservasPage />
                 </ProtectedRoute>
               } />
               <Route path="/admin" element={

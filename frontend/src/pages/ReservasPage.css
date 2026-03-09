@@ -1,0 +1,249 @@
+/* ReservasPage.css — Estilos para la página de reservas */
+
+.reservas-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 40px 20px;
+}
+
+/* Dark theme reservas - same as homepage */
+[data-theme="dark"] .reservas-page {
+  background: var(--color-white);
+}
+
+.reservas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.reservas-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.reservas-header h1 {
+  color: #333;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.reservas-header p {
+  color: #666;
+  font-size: 18px;
+}
+
+/* Dark theme header */
+[data-theme="dark"] .reservas-header h1 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .reservas-header p {
+  color: #b0b0b0;
+}
+
+.calendar-container {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 32px;
+}
+
+/* Dark theme calendar */
+[data-theme="dark"] .calendar-container {
+  background: #2d2d2d;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.calendar-title {
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Dark theme title */
+[data-theme="dark"] .calendar-title {
+  color: #ffffff;
+}
+
+.calendar-nav-button {
+  background: var(--color-green);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-nav-button:hover {
+  background: var(--color-green-dark);
+  transform: scale(1.05);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-weight: 600;
+  color: #666;
+  font-size: 14px;
+  padding: 12px 0;
+}
+
+/* Dark theme day headers */
+[data-theme="dark"] .calendar-day-header {
+  color: #b0b0b0;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.calendar-day:hover:not(.calendar-day--empty) {
+  background: #f8f9fa;
+  border-color: var(--color-green);
+}
+
+.calendar-day--empty {
+  cursor: default;
+}
+
+.calendar-day--today {
+  background: var(--color-green);
+  color: white;
+  font-weight: 700;
+}
+
+.calendar-day--selected {
+  background: var(--color-green-dark);
+  color: white;
+  border-color: var(--color-green);
+  transform: scale(1.05);
+}
+
+/* Dark theme calendar days */
+[data-theme="dark"] .calendar-day {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .calendar-day:hover:not(.calendar-day--empty) {
+  background: #404040;
+  border-color: var(--color-green);
+}
+
+.reservas-info {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Dark theme info */
+[data-theme="dark"] .reservas-info {
+  background: #2d2d2d;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.reservas-info h3 {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Dark theme info title */
+[data-theme="dark"] .reservas-info h3 {
+  color: #ffffff;
+}
+
+.selected-date {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+/* Dark theme selected date */
+[data-theme="dark"] .selected-date {
+  color: #b0b0b0;
+}
+
+.reservas-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+.reservas-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reservas-page {
+    padding: 20px 15px;
+  }
+  
+  .reservas-header h1 {
+    font-size: 28px;
+  }
+  
+  .reservas-header p {
+    font-size: 16px;
+  }
+  
+  .calendar-container,
+  .reservas-info {
+    padding: 20px;
+  }
+  
+  .calendar-title {
+    font-size: 20px;
+  }
+  
+  .calendar-day {
+    font-size: 14px;
+  }
+  
+  .calendar-grid {
+    gap: 4px;
+  }
+}
