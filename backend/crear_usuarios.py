@@ -84,12 +84,14 @@ def create_test_users():
             db.commit()
             db.refresh(new_user)
             
-            print(f"Usuario creado: {new_user.username} ({new_user.email}) - Rol: {new_user.role.value}")
+            print(f"Usuario creado: {new_user.username} ({new_user.email}) - Contraseña: {user_data['password']} - Rol: {new_user.role.value}")
         
         print("\nResumen de usuarios creados:")
         all_users = db.query(User).all()
         for user in all_users:
-            print(f"   • {user.username} - {user.email} - {user.role.value}")
+            # Buscar la contraseña correspondiente en test_users
+            password = next((u['password'] for u in test_users if u['email'] == user.email), 'N/A')
+            print(f"   • {user.username} - {user.email} - Contraseña: {password} - {user.role.value}")
         
         print(f"\nTotal de usuarios en la base de datos: {len(all_users)}")
         
