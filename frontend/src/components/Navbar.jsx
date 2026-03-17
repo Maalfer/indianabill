@@ -10,6 +10,7 @@ const NAV_LINKS = [
     { to: '/adultos', label: 'Adolescentes y adultos' },
     { to: '/localizacion', label: 'Localización' },
     { to: '/contacto', label: 'Contacto' },
+    { to: '/reservas', label: 'Reservas' },
 ]
 
 export default function Navbar() {
@@ -71,14 +72,6 @@ export default function Navbar() {
                         <>
                             {isAuthenticated ? (
                                 <>
-                                    <NavLink
-                                        to="/reservas"
-                                        className={({ isActive }) =>
-                                            `navbar__link${isActive ? ' navbar__link--active' : ''}`
-                                        }
-                                    >
-                                        Reservas
-                                    </NavLink>
                                     <div className="navbar__profile-dropdown">
                                         <button
                                             className="navbar__profile-button"

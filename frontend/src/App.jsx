@@ -48,11 +48,7 @@ export default function App() {
                   <ConfigPage />
                 </ProtectedRoute>
               } />
-              <Route path="/reservas" element={
-                <ProtectedRoute>
-                  <ReservasPage />
-                </ProtectedRoute>
-              } />
+              <Route path="/reservas" element={<ReservasPage />} />
               <Route path="/admin" element={
                 <ProtectedRoute>
                   <AdminPage />
