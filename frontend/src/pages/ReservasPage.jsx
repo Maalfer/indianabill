@@ -64,6 +64,22 @@ export default function ReservasPage() {
            currentMonth.getFullYear() === selectedDate.getFullYear()
   }
   
+  const handleConfirmReserva = () => {
+    const formattedDate = selectedDate.toLocaleDateString('es-ES', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+    
+    const message = encodeURIComponent(
+      `¡Hola! \n\nQuiero hacer una reserva para el día ${formattedDate}.\n\n¿Podrían confirmarme la disponibilidad?\n\nGracias! `
+    )
+    
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=34600000000&text=${message}`
+    window.open(whatsappUrl, '_blank')
+  }
+  
   const calendarDays = generateCalendarDays()
   
   return (
@@ -120,7 +136,7 @@ export default function ReservasPage() {
               day: 'numeric'
             })}
           </p>
-          <button className="reservas-button">
+          <button className="reservas-button" onClick={handleConfirmReserva}>
             Confirmar Reserva
           </button>
         </div>
