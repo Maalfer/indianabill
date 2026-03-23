@@ -337,7 +337,49 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Config Info Section */
+/* Info List Styles (for user info inside cards) */
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.info-list .info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e1e5e9;
+}
+
+.info-list .info-item:last-child {
+  border-bottom: none;
+}
+
+.info-list .info-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.info-list .info-value {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Dark theme for info list */
+[data-theme="dark"] .info-list .info-item {
+  border-bottom-color: #404040;
+}
+
+[data-theme="dark"] .info-list .info-label {
+  color: #b0b0b0;
+}
+
+[data-theme="dark"] .info-list .info-value {
+  color: #ffffff;
+}
+
+/* Config Info Section (deprecated - keeping for compatibility) */
 .config-info {
   margin-bottom: 40px;
 }

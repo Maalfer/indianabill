@@ -83,18 +83,6 @@ export default function ConfigPage() {
                   </div>
                   <span>Oscuro</span>
                 </div>
-                <div 
-                  className={`theme-option ${theme === 'auto' ? 'active' : ''}`}
-                  onClick={() => updateTheme('auto')}
-                >
-                  <div className="theme-preview auto">
-                    <div className="preview-header"></div>
-                    <div className="preview-content">
-                      <div className="preview-card"></div>
-                    </div>
-                  </div>
-                  <span>Automático</span>
-                </div>
               </div>
             </div>
           </div>
@@ -195,23 +183,31 @@ export default function ConfigPage() {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* User Info Section */}
-        <div className="config-info">
-          <div className="info-card">
-            <h4>Información de la cuenta</h4>
-            <div className="info-item">
-              <span className="info-label">Usuario:</span>
-              <span className="info-value">{user?.username}</span>
+          {/* User Info Section */}
+          <div className="config-card">
+            <div className="config-card-header">
+              <div className="config-icon">👤</div>
+              <div>
+                <h3>Información de la cuenta</h3>
+                <p>Detalles de tu perfil</p>
+              </div>
             </div>
-            <div className="info-item">
-              <span className="info-label">Email:</span>
-              <span className="info-value">{user?.email}</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Rol:</span>
-              <span className="info-value">{user?.role === 'admin' ? 'Administrador' : 'Usuario'}</span>
+            <div className="config-content">
+              <div className="info-list">
+                <div className="info-item">
+                  <span className="info-label">Usuario:</span>
+                  <span className="info-value">{user?.username}</span>
+                </div>
+                <div className="info-item">
+                  <span className="info-label">Email:</span>
+                  <span className="info-value">{user?.email}</span>
+                </div>
+                <div className="info-item">
+                  <span className="info-label">Rol:</span>
+                  <span className="info-value">{user?.role === 'admin' ? 'Administrador' : 'Usuario'}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -109,12 +109,16 @@
     font-size: 0.9rem;
     font-weight: var(--font-weight-semi);
     cursor: pointer;
-    padding: 8px 12px;
+    padding: 0 12px;
+    padding-bottom: 4px;
     border-radius: 8px;
     transition: var(--transition);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
+    line-height: 1;
+    height: 100%;
 }
 
 .navbar__profile-button:hover {

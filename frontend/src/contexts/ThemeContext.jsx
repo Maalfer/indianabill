@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { useAuth } from './AuthContext'
+import { cleanAutoThemes } from '../utils/cleanThemeStorage'
 
 const ThemeContext = createContext()
 
@@ -14,13 +15,22 @@ export function useTheme() {
 export function ThemeProvider({ children }) {
   const { user, isAuthenticated } = useAuth()
   
+  // Limpiar temas "auto" al inicio
+  useEffect(() => {
+    cleanAutoThemes()
+  }, [])
+  
   const [theme, setTheme] = useState(() => {
-    // If no user is authenticated, always use light theme
-    if (!isAuthenticated) {
+    // Always default to light theme initially
+    const savedTheme = localStorage.getItem(`theme_${user?.id || 'guest'}`)
+    
+    // If user has saved 'auto', convert it to 'light' for now
+    if (savedTheme === 'auto') {
       return 'light'
     }
-    // If user is authenticated, use their saved theme
-    return localStorage.getItem(`theme_${user?.id || 'guest'}`) || 'light'
+    
+    // Return saved theme or default to light
+    return savedTheme || 'light'
   })
   
   const [language, setLanguage] = useState(() => {
@@ -42,33 +52,39 @@ export function ThemeProvider({ children }) {
   })
 
   useEffect(() => {
-    // When authentication status changes, reset theme accordingly
-    if (!isAuthenticated) {
+    // When authentication status changes, load saved preferences
+    if (!isAuthenticated || !user) {
       // No user authenticated - always use light theme
       setTheme('light')
       setLanguage('es')
       setFontSize('medium')
     } else {
       // User authenticated - load their saved preferences
-      const savedTheme = localStorage.getItem(`theme_${user?.id || 'guest'}`) || 'light'
-      const savedLanguage = localStorage.getItem(`language_${user?.id || 'guest'}`) || 'es'
-      const savedFontSize = localStorage.getItem(`fontSize_${user?.id || 'guest'}`) || 'medium'
+      const savedTheme = localStorage.getItem(`theme_${user.id}`)
+      const savedLanguage = localStorage.getItem(`language_${user.id}`)
+      const savedFontSize = localStorage.getItem(`fontSize_${user.id}`)
       
-      setTheme(savedTheme)
-      setLanguage(savedLanguage)
-      setFontSize(savedFontSize)
+      // Convert 'auto' to 'light' if found
+      const finalTheme = savedTheme === 'auto' ? 'light' : (savedTheme || 'light')
+      
+      setTheme(finalTheme)
+      setLanguage(savedLanguage || 'es')
+      setFontSize(savedFontSize || 'medium')
     }
   }, [isAuthenticated, user])
 
   useEffect(() => {
     // Apply theme to document whenever it changes
     const root = document.documentElement
-    root.setAttribute('data-theme', theme)
+    
+    // Only apply 'light' or 'dark' themes
+    const actualTheme = theme === 'auto' ? 'light' : theme
+    root.setAttribute('data-theme', actualTheme)
     
     // Apply font size
     root.setAttribute('data-font-size', fontSize)
     
-    // Save to localStorage with user-specific key if authenticated, otherwise don't save
+    // Save to localStorage with user-specific key if authenticated
     if (isAuthenticated && user) {
       localStorage.setItem(`theme_${user.id}`, theme)
       localStorage.setItem(`fontSize_${user.id}`, fontSize)
@@ -83,7 +99,9 @@ export function ThemeProvider({ children }) {
   }, [language, isAuthenticated, user])
 
   const updateTheme = (newTheme) => {
-    setTheme(newTheme)
+    // Convert 'auto' to 'light' for now
+    const finalTheme = newTheme === 'auto' ? 'light' : newTheme
+    setTheme(finalTheme)
   }
 
   const updateLanguage = (newLanguage) => {
