@@ -11,12 +11,16 @@ class Settings(BaseSettings):
     app_name: str = "Indiana Bill Gijón"
     debug: bool = False
     cors_origins: List[str] = ["http://localhost:5173", "http://localhost:3000"]
-    database_url: str = "sqlite:///./indianabill.db"
+    database_url: str = "postgresql://postgres:password@localhost:5432/indianabill"
     secret_key: str = "tu_secreto_super_seguro_aqui"
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
 
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(
+        env_file=".env", 
+        env_file_encoding="utf-8",
+        extra="ignore"  # Ignorar variables extra en el archivo .env
+    )
 
 
 # Instancia singleton exportada al resto de la app
