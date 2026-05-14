@@ -11,26 +11,18 @@ const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 export default function HomePage() {
     const [servicios, setServicios] = useState([])
     const [faq, setFaq] = useState([])
-    const [expandedItems, setExpandedItems] = useState({})
 
     useEffect(() => {
         fetch(`${API}/api/servicios`)
             .then((r) => r.json())
             .then(setServicios)
-            .catch(() => { })
+            .catch(console.error)
 
         fetch(`${API}/api/faq`)
             .then((r) => r.json())
             .then((d) => setFaq(d.items))
-            .catch(() => { })
+            .catch(console.error)
     }, [])
-
-    const toggleItem = (index) => {
-        setExpandedItems(prev => ({
-            ...prev,
-            [index]: !prev[index]
-        }))
-    }
 
     return (
         <>

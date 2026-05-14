@@ -2,7 +2,7 @@
 schemas/user.py — Esquemas Pydantic para validación de datos de usuario
 """
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, model_validator
 from typing import Optional, List
 from datetime import datetime
 from ..models.user import UserRole
@@ -13,6 +13,12 @@ class UserCreate(BaseModel):
     password: str
     confirm_password: str
     role: Optional[UserRole] = UserRole.USER
+
+    @model_validator(mode='after')
+    def passwords_match(self):
+        if self.password != self.confirm_password:
+            raise ValueError('Las contraseñas no coinciden')
+        return self
 
 class UserLogin(BaseModel):
     email: EmailStr

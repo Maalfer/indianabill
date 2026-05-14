@@ -33,15 +33,6 @@ export default function DashboardPage() {
           </div>
 
           <div className="dashboard-card">
-            <div className="card-icon">📋</div>
-            <h3>Historial</h3>
-            <p>Revisa tu historial de actividades y reservas</p>
-            <button className="card-button" disabled>
-              Próximamente
-            </button>
-          </div>
-
-          <div className="dashboard-card">
             <div className="card-icon">⚙️</div>
             <h3>Configuración</h3>
             <p>Administra tus preferencias y configuración</p>

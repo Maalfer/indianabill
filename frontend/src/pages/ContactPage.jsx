@@ -13,11 +13,14 @@ export default function ContactPage() {
     const handleChange = (e) =>
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        setStatus('sending')
-        // Simula envío (el backend no tiene endpoint de contact aún)
-        await new Promise((r) => setTimeout(r, 1200))
+        const lines = [`Hola, soy ${form.nombre} (${form.email})`]
+        if (form.telefono) lines.push(`Teléfono: ${form.telefono}`)
+        if (form.servicio) lines.push(`Servicio: ${form.servicio}`)
+        lines.push('', form.mensaje)
+        const url = `https://api.whatsapp.com/send?phone=34984000000&text=${encodeURIComponent(lines.join('\n'))}`
+        window.open(url, '_blank')
         setStatus('ok')
     }
 

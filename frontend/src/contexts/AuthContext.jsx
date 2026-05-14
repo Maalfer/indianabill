@@ -2,8 +2,6 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
-console.log('API URL configurada:', API)
-
 const AuthContext = createContext()
 
 export function useAuth() {
@@ -37,7 +35,6 @@ export function AuthProvider({ children }) {
       
       if (response.ok) {
         const userData = await response.json()
-        console.log('Datos del usuario:', userData)
         setUser(userData)
       } else {
         localStorage.removeItem('token')
@@ -52,9 +49,6 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     try {
-      console.log('Intentando login:', { email })
-      console.log('API URL:', API)
-      
       const response = await fetch(`${API}/auth/login`, {
         method: 'POST',
         headers: {
@@ -63,12 +57,8 @@ export function AuthProvider({ children }) {
         body: JSON.stringify({ email, password })
       })
 
-      console.log('Response status:', response.status)
-      console.log('Response ok:', response.ok)
-
       if (!response.ok) {
         const errorText = await response.text()
-        console.error('Error response:', errorText)
         let error
         try {
           const errorData = JSON.parse(errorText)
@@ -80,7 +70,6 @@ export function AuthProvider({ children }) {
       }
 
       const data = await response.json()
-      console.log('Login exitoso:', data)
       localStorage.setItem('token', data.access_token)
       await fetchUserInfo(data.access_token)
       return { success: true }
@@ -92,9 +81,6 @@ export function AuthProvider({ children }) {
 
   const register = async (username, email, password) => {
     try {
-      console.log('Intentando registrar usuario:', { username, email })
-      console.log('API URL:', API)
-      
       const response = await fetch(`${API}/auth/register`, {
         method: 'POST',
         headers: {
@@ -103,12 +89,8 @@ export function AuthProvider({ children }) {
         body: JSON.stringify({ username, email, password })
       })
 
-      console.log('Response status:', response.status)
-      console.log('Response ok:', response.ok)
-
       if (!response.ok) {
         const errorText = await response.text()
-        console.error('Error response:', errorText)
         let error
         try {
           const errorData = JSON.parse(errorText)
@@ -120,7 +102,6 @@ export function AuthProvider({ children }) {
       }
 
       const data = await response.json()
-      console.log('Registro exitoso:', data)
       return { success: true, user: data }
     } catch (error) {
       console.error('Error en registro:', error)

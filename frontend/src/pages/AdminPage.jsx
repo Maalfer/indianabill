@@ -58,6 +58,7 @@ export default function AdminPage() {
       })
 
       if (response.ok) {
+        setError('')
         setMessage('Rol actualizado correctamente')
         fetchUsers()
         setTimeout(() => setMessage(''), 3000)
@@ -82,6 +83,7 @@ export default function AdminPage() {
       })
 
       if (response.ok) {
+        setError('')
         setMessage('Usuario eliminado correctamente')
         fetchUsers()
         setTimeout(() => setMessage(''), 3000)
@@ -108,6 +110,7 @@ export default function AdminPage() {
       })
 
       if (response.ok) {
+        setError('')
         setMessage('Contraseña actualizada correctamente')
         setShowPasswordModal(false)
         setNewPassword('')

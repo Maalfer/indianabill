@@ -51,7 +51,7 @@ export default function ServicesPage() {
         fetch(`${API}/api/servicios`)
             .then((r) => r.json())
             .then(setServicios)
-            .catch(() => { })
+            .catch(console.error)
     }, [])
 
     return (

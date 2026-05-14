@@ -76,7 +76,7 @@ export default function ReservasPage() {
       `¡Hola! \n\nQuiero hacer una reserva para el día ${formattedDate}.\n\n¿Podrían confirmarme la disponibilidad?\n\nGracias! `
     )
     
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=34600000000&text=${message}`
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=34984000000&text=${message}`
     window.open(whatsappUrl, '_blank')
   }
   
