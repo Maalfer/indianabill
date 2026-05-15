@@ -1,0 +1,183 @@
+.bono-hero {
+    background: linear-gradient(135deg, var(--color-green-light) 0%, var(--color-white) 60%);
+    padding: 5rem 0 3.5rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.bono-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--color-green);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.bono-hero h1 { margin-bottom: 0.75rem; }
+
+.bono-hero p {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    max-width: 560px;
+    margin: 0 auto 1.5rem;
+}
+
+.bono-hero__price-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-green);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: 1rem 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.bono-hero__price {
+    font-size: 3rem;
+    font-weight: var(--font-weight-extra);
+    line-height: 1;
+}
+
+.bono-hero__price-sub {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+}
+
+.bono-hero__ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bono-que-es {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bono-que-es p {
+    font-size: 1.05rem;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+}
+
+.bono-detalles { background: var(--color-light-gray); }
+
+.bono-detalles__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.bono-detalle-card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--color-green);
+    transition: var(--transition);
+}
+
+.bono-detalle-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.bono-detalle-card--highlight {
+    border-top-color: var(--color-yellow);
+    background: #fffdf0;
+}
+
+.bono-detalle-card__icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+.bono-detalle-card h3 { margin-bottom: 0.5rem; font-size: 1rem; }
+.bono-detalle-card p { color: var(--color-gray); font-size: 0.9rem; }
+.bono-detalle-card p strong { color: var(--color-green); }
+
+.bono-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.bono-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.bono-step__num {
+    width: 48px;
+    height: 48px;
+    background: var(--color-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-bold);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.bono-step h3 { margin-bottom: 0.4rem; font-size: 1rem; }
+.bono-step p { color: var(--color-gray); font-size: 0.9rem; }
+
+.bono-cta {
+    background: var(--color-green);
+    padding: 4rem 0;
+}
+
+.bono-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.bono-cta h2 { color: white; margin-bottom: 0.5rem; }
+.bono-cta p { color: rgba(255,255,255,0.85); }
+
+@media (max-width: 900px) {
+    .bono-detalles__grid { grid-template-columns: repeat(2, 1fr); }
+    .bono-steps { grid-template-columns: 1fr; }
+}
+
+.bono-hero__tel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    border-radius: 50px;
+    border: 2px solid var(--color-dark);
+    background: transparent;
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.bono-hero__tel:hover {
+    background: var(--color-dark);
+    color: white;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+    .bono-detalles__grid { grid-template-columns: 1fr; }
+    .bono-hero__ctas { flex-direction: column; align-items: stretch; }
+    .bono-hero__tel { text-align: center; justify-content: center; }
+    .bono-cta__inner { flex-direction: column; text-align: center; }
+}

@@ -7,9 +7,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import info, auth, users, admin
+from app.routers import info, auth, users, admin, leads, blog, automation, pagos
 from app.database import engine
 from app.models.user import Base
+import app.models.lead       # noqa: F401 — registers Lead table
+import app.models.email_job  # noqa: F401 — registers EmailJob table
 
 # Crear tablas en la base de datos
 Base.metadata.create_all(bind=engine)
@@ -36,6 +38,10 @@ app.include_router(info.router)
 app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(admin.router)
+app.include_router(leads.router)
+app.include_router(blog.router)
+app.include_router(automation.router)
+app.include_router(pagos.router)
 
 
 # ── Health check ──────────────────────────────────────────────────────────────

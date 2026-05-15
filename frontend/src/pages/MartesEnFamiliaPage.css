@@ -1,0 +1,199 @@
+.martes-hero {
+    background: linear-gradient(135deg, #fff8e8 0%, var(--color-white) 60%);
+    padding: 5rem 0 3.5rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.martes-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--color-yellow);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.martes-hero h1 { margin-bottom: 0.75rem; }
+
+.martes-hero p {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.martes-hero__ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.martes-que-es {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.martes-que-es__text h2 { margin-bottom: 1rem; }
+.martes-que-es__text p { margin-bottom: 1rem; color: var(--color-dark); }
+.martes-que-es__text p:last-child { margin-bottom: 0; }
+
+.martes-que-es__visual {
+    text-align: center;
+    background: var(--color-light-gray);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 1.5rem;
+}
+
+.martes-que-es__emoji { font-size: 4rem; display: block; margin-bottom: 1rem; }
+.martes-que-es__visual p { font-weight: var(--font-weight-semi); color: var(--color-dark); }
+
+.martes-precios { background: var(--color-light-gray); }
+
+.martes-precios__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.martes-precio-card {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border-top: 3px solid var(--color-green);
+}
+
+.martes-precio-card--destacado {
+    border-top-color: var(--color-yellow);
+    transform: scale(1.03);
+    box-shadow: var(--shadow-md);
+}
+
+.martes-precio-card__icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+.martes-precio-card h3 { margin-bottom: 0.5rem; }
+
+.martes-precio-card__price {
+    display: block;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-green);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.martes-precio-card--destacado .martes-precio-card__price { color: var(--color-yellow); }
+.martes-precio-card p { color: var(--color-gray); font-size: 0.9rem; }
+
+.martes-precios__nota {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.martes-horario {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.martes-horario__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-sm);
+    min-width: 240px;
+}
+
+.martes-horario__item span { font-size: 2rem; }
+.martes-horario__item strong { display: block; margin-bottom: 0.25rem; }
+.martes-horario__item p { margin: 0; color: var(--color-gray); }
+
+.martes-normas { background: var(--color-light-gray); }
+
+.martes-normas__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.martes-norma-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.martes-norma-card span { font-size: 1.8rem; flex-shrink: 0; }
+.martes-norma-card p { margin: 0; font-size: 0.95rem; }
+
+.martes-cta {
+    background: var(--color-yellow);
+    padding: 4rem 0;
+}
+
+.martes-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.martes-cta h2 { color: white; margin-bottom: 0.5rem; }
+.martes-cta p { color: rgba(255,255,255,0.9); }
+
+@media (max-width: 900px) {
+    .martes-que-es { grid-template-columns: 1fr; }
+    .martes-que-es__visual { display: none; }
+    .martes-precios__grid { grid-template-columns: 1fr; }
+    .martes-precio-card--destacado { transform: none; }
+    .martes-normas__grid { grid-template-columns: 1fr; }
+}
+
+.martes-hero__tel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    border-radius: 50px;
+    border: 2px solid var(--color-dark);
+    background: transparent;
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.martes-hero__tel:hover {
+    background: var(--color-dark);
+    color: white;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+    .martes-hero__ctas { flex-direction: column; align-items: stretch; }
+    .martes-hero__tel { text-align: center; justify-content: center; }
+    .martes-cta__inner { flex-direction: column; text-align: center; }
+}

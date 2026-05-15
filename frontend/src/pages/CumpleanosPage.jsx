@@ -1,121 +1,188 @@
-import { useEffect, useState } from 'react'
 import Button from '../components/Button'
+import LeadForm from '../components/LeadForm'
+import FAQAccordion from '../components/FAQAccordion'
 import './CumpleanosPage.css'
 
+const WA = 'https://api.whatsapp.com/send?phone=34684657760&text=%C2%A1Hola!%20Me%20interesa%20reservar%20un%20cumplea%C3%B1os%20en%20Indiana%20Bill%20Gij%C3%B3n%20%F0%9F%8E%82.%20%C2%BFMe%20pod%C3%A9is%20dar%20m%C3%A1s%20informaci%C3%B3n%3F'
+
+const INCLUYE = [
+    { icon: '🍔', label: 'Merienda completa' },
+    { icon: '🥤', label: 'Bebida incluida' },
+    { icon: '🎂', label: 'Tarta y velas' },
+    { icon: '🎁', label: 'Regalo al anfitrión' },
+    { icon: '🏠', label: 'Parque cubierto ilimitado' },
+    { icon: '👩‍🏫', label: 'Monitores' },
+    { icon: '🏋️', label: 'Hinchables y toboganes' },
+    { icon: '🎳', label: 'Piscina de bolas' },
+    { icon: '⚽', label: 'Pista de fútbol' },
+]
+
+const PASOS = [
+    { num: '1', title: 'Nos contactas', desc: 'Por WhatsApp, teléfono o formulario con la fecha deseada.' },
+    { num: '2', title: 'Confirmamos fecha', desc: 'Revisamos disponibilidad y te respondemos rápido.' },
+    { num: '3', title: 'Reserva con fianza', desc: 'Pequeño pago para formalizar. El resto, el día del cumpleaños.' },
+    { num: '4', title: '¡A celebrar!', desc: 'Llegáis y nosotros tenemos todo preparado.' },
+]
+
+const FAQ_CUMPLE = [
+    {
+        pregunta: '¿Para qué edades es el cumpleaños?',
+        respuesta: 'Nuestra especialidad son los cumpleaños de niños de 0 a 12 años. Disponemos de zonas diferenciadas para los más pequeños y para los más mayores.',
+    },
+    {
+        pregunta: '¿Es un espacio privado?',
+        respuesta: 'Sí. El local queda reservado exclusivamente para tu fiesta. Solo estaréis vosotros durante toda la celebración.',
+    },
+    {
+        pregunta: '¿Cuánto dura el cumpleaños?',
+        respuesta: 'La celebración dura aproximadamente 4 horas. Los niños tienen acceso ilimitado al parque durante todo ese tiempo.',
+    },
+    {
+        pregunta: '¿Tienen opciones para alérgicos?',
+        respuesta: 'Sí, disponemos de menús adaptados para celíacos y otras alergias. Consúltanos al hacer la reserva y lo gestionamos sin problema.',
+    },
+    {
+        pregunta: '¿Cuántos niños mínimo se necesitan?',
+        respuesta: 'El mínimo es de 8 niños. No hay máximo establecido — ¡cuantos más, más diversión!',
+    },
+    {
+        pregunta: '¿Cómo se paga? ¿Hay que pagar todo por adelantado?',
+        respuesta: 'Solo se paga una fianza al reservar para confirmar la fecha. El resto se abona el día del cumpleaños.',
+    },
+    {
+        pregunta: '¿Los adultos pueden entrar al parque?',
+        respuesta: 'Durante el cumpleaños los adultos tienen acceso a la zona de cafetería y comedor. El parque es para los peques.',
+    },
+    {
+        pregunta: '¿Qué pasa si necesito cancelar?',
+        respuesta: 'Consúltanos directamente. Intentamos ser lo más flexibles posible con las cancelaciones y cambios de fecha.',
+    },
+]
+
 export default function CumpleanosPage() {
-    const [expandedSection, setExpandedSection] = useState(null)
-
-    const toggleSection = (section) => {
-        setExpandedSection(expandedSection === section ? null : section)
-    }
-
     return (
         <>
-            {/* Page header */}
+            {/* HERO */}
             <div className="cumpleanos-hero">
                 <div className="container">
-                    <span className="cumpleanos-hero__badge">🎂 Los mejores cumpleaños</span>
-                    <h1>Cumpleaños para niños</h1>
-                    <p>Menús, precios y toda la información para celebrar el mejor cumpleaños en Gijón</p>
+                    <span className="cumpleanos-hero__badge">🎂 La página más importante — cumpleaños en Gijón</span>
+                    <h1>Cumpleaños infantiles en Gijón sin complicaciones</h1>
+                    <p>
+                        Más de <strong>4 horas reales de diversión</strong> para los peques y tranquilidad para vosotros.
+                        Nos encargamos de todo.
+                    </p>
+                    <div className="cumpleanos-hero__ctas">
+                        <Button href="#formulario" variant="primary" size="lg">
+                            📅 Consultar disponibilidad
+                        </Button>
+                        <Button href="#menus" variant="outline" size="lg">
+                            Ver precios
+                        </Button>
+                        <a href={WA} target="_blank" rel="noopener noreferrer" className="cumpleanos-hero__wa">
+                            💬 WhatsApp
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            {/* Main content */}
-            <section className="section cumpleanos-intro">
+            {/* QUÉ INCLUYE */}
+            <section className="section cumpleanos-incluye">
                 <div className="container">
-                    <div className="cumpleanos-intro__content">
-                        <p>
-                            Si quieres celebrar un cumpleaños para niños estás en el lugar adecuado. 
-                            Aquí te enseñaremos los distintos menús y precios de cumpleaños que tenemos en el Indiana Bill de Gijón.
-                            Además, te mostraremos como debes formalizar la reserva y algunas de las dudas más frecuentes que se suelen tener.
-                            Después de esto, estamos seguros de que sabrás donde celebrar tu cumpleaños en Gijón. ¡Allá vamos!
-                        </p>
+                    <header className="section-header">
+                        <h2>¿Qué incluye el cumpleaños?</h2>
+                        <p>Todo lo que necesitáis para una celebración perfecta</p>
+                        <div className="divider" />
+                    </header>
+                    <div className="cumpleanos-incluye__grid">
+                        {INCLUYE.map((item) => (
+                            <div key={item.label} className="cumpleanos-incluye-item">
+                                <span>{item.icon}</span>
+                                <span>{item.label}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* ── YOUTUBE VIDEO ─────────────────────────────────────────── */}
-            <section className="section home-video">
+            {/* MENÚS Y PRECIOS */}
+            <section className="section cumpleanos-menus" id="menus">
                 <div className="container">
-                    <div className="video-container">
-                        <iframe
-                            width="100%"
-                            height="500"
-                            src="https://www.youtube.com/embed/llKb4NkS2tU"
-                            title="Indiana Bill Gijón Video"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className="video-iframe"
-                        ></iframe>
+                    <header className="section-header">
+                        <h2>Menús y precios</h2>
+                        <p>Desde 19,50€/niño — transparencia total, sin sorpresas</p>
+                        <div className="divider" />
+                    </header>
+                    <div className="menus-images">
+                        <img src={import.meta.env.BASE_URL + 'menu1.png'} alt="Menú Indy — cumpleaños en Gijón" className="menus-images__img" />
+                        <img src={import.meta.env.BASE_URL + 'menu2.png'} alt="Menú Super Indy — cumpleaños en Gijón" className="menus-images__img" />
                     </div>
+                    <div className="menu-alergenos">
+                        <img src={import.meta.env.BASE_URL + 'menuAlergenos.jpg'} alt="Información de alérgenos" className="menu-alergenos__img" />
+                    </div>
+                    <p className="menus-nota">Mínimo 8 niños. El precio incluye el acceso al parque durante toda la celebración. Consúltanos si tienes necesidades especiales de alergia o dieta.</p>
                 </div>
             </section>
 
-            {/* How to reserve */}
-            <section className="section cumpleanos-reserva">
+            {/* CÓMO RESERVAR */}
+            <section className="section cumpleanos-como">
                 <div className="container">
                     <header className="section-header">
                         <h2>¿Cómo reservar?</h2>
-                        <p>Reservar tu cumpleaños es muy sencillo</p>
+                        <p>Solo 4 pasos y tenéis el cumpleaños listo</p>
                         <div className="divider" />
                     </header>
-
-                    <div className="cumpleanos-reserva__content">
-                        <div className="cumpleanos-reserva__steps">
-                            <div className="reserva-step">
-                                <div className="reserva-step__number">1</div>
-                                <div className="reserva-step__content">
-                                    <h3>Decide los detalles</h3>
-                                    <p>Menú, tarta, número de niños, horario de reserva y fecha</p>
-                                </div>
+                    <div className="cumpleanos-como__steps">
+                        {PASOS.map((p) => (
+                            <div key={p.num} className="cumpleanos-como__step">
+                                <div className="cumpleanos-como__step-num">{p.num}</div>
+                                <h4>{p.title}</h4>
+                                <p>{p.desc}</p>
                             </div>
+                        ))}
+                    </div>
+                    <div className="cumpleanos-como__contact">
+                        <a href="tel:985374167" className="cumpleanos-como__tel">📞 985 374 167</a>
+                        <span className="cumpleanos-como__o">o</span>
+                        <a href="tel:684657760" className="cumpleanos-como__tel">📱 684 657 760</a>
+                    </div>
+                </div>
+            </section>
 
-                            <div className="reserva-step">
-                                <div className="reserva-step__number">2</div>
-                                <div className="reserva-step__content">
-                                    <h3>Contacta con nosotros</h3>
-                                    <p>Llama o envía un WhatsApp para confirmar disponibilidad</p>
-                                </div>
-                            </div>
-
-                            <div className="reserva-step">
-                                <div className="reserva-step__number">3</div>
-                                <div className="reserva-step__content">
-                                    <h3>Formaliza la reserva</h3>
-                                    <p>Paga por anticipado para oficializar la reserva</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="cumpleanos-reserva__contact">
-                            <h3>Para reservar llama a:</h3>
-                            <div className="contact-numbers">
-                                <a href="tel:985374167" className="contact-number">985 374 167</a>
-                                <span>o</span>
-                                <a href="tel:684657760" className="contact-number">684 657 760</a>
-                            </div>
-                            <p className="contact-note">
-                                *Se deberá contactar con el parque vía telefónica o dentro de él. 
-                                Esto, quiere decir que vía correo electrónico o redes sociales no se podrá hacer.
+            {/* FORMULARIO */}
+            <section className="section cumpleanos-form" id="formulario">
+                <div className="container">
+                    <div className="cumpleanos-form__layout">
+                        <div className="cumpleanos-form__left">
+                            <h2>Consulta disponibilidad</h2>
+                            <p>Rellena el formulario y te respondemos en menos de 24 horas. Sin compromiso.</p>
+                            <ul className="cumpleanos-form__bullets">
+                                <li>✅ Respuesta rápida garantizada</li>
+                                <li>✅ Sin compromiso de reserva</li>
+                                <li>✅ Te avisamos si la fecha está libre</li>
+                                <li>✅ Las fechas de fin de semana se agotan</li>
+                            </ul>
+                            <p className="cumpleanos-form__urgencia">
+                                Las fechas de fin de semana suelen reservarse con semanas de antelación. No lo dejes para el último momento.
                             </p>
+                        </div>
+                        <div className="cumpleanos-form__right">
+                            <LeadForm servicio="cumpleanos" />
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Schedule */}
+            {/* HORARIO */}
             <section className="section cumpleanos-horario">
                 <div className="container">
                     <header className="section-header">
-                        <h2>Horario</h2>
+                        <h2>Horario de cumpleaños</h2>
                         <div className="divider" />
                     </header>
-
                     <div className="horario-card">
                         <div className="horario-item">
                             <span className="horario-day">Lunes</span>
-                            <span className="horario-time">Cerrado por descanso (excepto vísperas y festivos)</span>
+                            <span className="horario-time">Cerrado (excepto vísperas y festivos)</span>
                         </div>
                         <div className="horario-item">
                             <span className="horario-day">Martes y Jueves</span>
@@ -133,102 +200,70 @@ export default function CumpleanosPage() {
                 </div>
             </section>
 
-            {/* Menus */}
-            <section className="section cumpleanos-menus">
-                <div className="container">
-                    <header className="section-header">
-                        <h2>Menús de cumpleaños para niños</h2>
-                        <p>Dentro del precio del menú, viene incluido pasar la tarde en el Indiana Bill de Gijón</p>
-                        <div className="divider" />
-                    </header>
-
-                    <div className="menus-images">
-                        <img src={import.meta.env.BASE_URL + 'menu1.png'} alt="Menú de cumpleaños Indy" className="menus-images__img" />
-                        <img src={import.meta.env.BASE_URL + 'menu2.png'} alt="Menú de cumpleaños Super Indy" className="menus-images__img" />
-                    </div>
-
-                    <div className="menu-alergenos">
-                        <img src={import.meta.env.BASE_URL + 'menuAlergenos.jpg'} alt="Información de alérgenos" className="menu-alergenos__img" />
-                    </div>
-                </div>
-            </section>
-
-            {/* Activities */}
+            {/* ACTIVIDADES */}
             <section className="section cumpleanos-actividades">
                 <div className="container">
                     <header className="section-header">
                         <h2>Actividades incluidas</h2>
-                        <p>Se realizarán actividades como globloflexia, torneo de fútbol o pintacaras dentro del Indiana Bill</p>
+                        <p>Además del juego libre, hacemos actividades dirigidas durante la celebración</p>
                         <div className="divider" />
                     </header>
-
                     <div className="actividades-grid">
                         <div className="actividad-card">
                             <span className="actividad-card__icon">🎈</span>
-                            <h3>Globloflexia</h3>
-                            <p>Diversión con globos y juegos de magia</p>
+                            <h3>Globoflexia</h3>
+                            <p>Diversión con globos y animación para los peques</p>
                         </div>
                         <div className="actividad-card">
                             <span className="actividad-card__icon">⚽</span>
                             <h3>Torneo de fútbol</h3>
-                            <p>Competencias amistosas en nuestra pista techada</p>
+                            <p>Competencias amistosas en la pista techada</p>
                         </div>
                         <div className="actividad-card">
                             <span className="actividad-card__icon">🎨</span>
                             <h3>Pintacaras</h3>
-                            <p>Creación artística y divertida con pinturas faciales</p>
+                            <p>Arte facial divertido para todos los niños</p>
                         </div>
                         <div className="actividad-card">
                             <span className="actividad-card__icon">🎮</span>
-                            <h3>Juegos infantiles</h3>
-                            <p>Amplia variedad de juegos adaptados a cada edad</p>
+                            <h3>Juego libre</h3>
+                            <p>Parque de bolas, toboganes, hinchables y mucho más</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Info */}
-            <section className="section cumpleanos-info">
+            {/* FAQ */}
+            <section className="section cumpleanos-faq">
                 <div className="container">
                     <header className="section-header">
-                        <h2>Preguntas Frecuentes</h2>
+                        <h2>Preguntas frecuentes</h2>
+                        <p>Todo lo que necesitas saber antes de reservar</p>
                         <div className="divider" />
                     </header>
-                    <div className="info-card">
-                        <h3>¿Para qué edades?</h3>
-                        <p>
-                            Nuestra especialidad es celebrar cumpleaños para los más pequeños de la casa. 
-                            Los niños y niñas que vienen a jugar a nuestra ludoteca tienen entre 0 y 12 años.
-                        </p>
-                    </div>
-
-                    <div className="info-card">
-                        <h3>¿Es privado?</h3>
-                        <p>
-                            Sí, al ser una fiesta privada, se otorgaría el local a quien antes lo concrete. 
-                            Por eso es importante formalizar la reserva con pago anticipado.
-                        </p>
-                    </div>
+                    <FAQAccordion items={FAQ_CUMPLE} />
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="section cumpleanos-cta">
+            {/* CTA FINAL */}
+            <section className="cumpleanos-cta">
                 <div className="container">
                     <div className="cumpleanos-cta__content">
                         <div>
-                            <h2>¿Tienes dudas? ¡Háblanos por WhatsApp!</h2>
-                            <p>Estamos disponibles para resolver cualquier pregunta sobre reservas y precios</p>
+                            <h2>Consulta disponibilidad antes de que se llenen las fechas</h2>
+                            <p>Los fines de semana se reservan rápido. Escríbenos ahora.</p>
                         </div>
-                        <Button
-                            href="https://api.whatsapp.com/send?phone=34684657760&text=%C2%A1Hola!%20Me%20interesa%20reservar%20una%20fiesta%20para%20ni%C3%B1os%20en%20Indiana%20Bill%20Gij%C3%B3n%20%F0%9F%8E%88.%20%C2%BFMe%20pod%C3%A9is%20dar%20m%C3%A1s%20informaci%C3%B3n%3F"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            variant="primary"
-                            size="lg"
-                        >
-                            💬 Clic para escribirnos
-                        </Button>
+                        <div className="cumpleanos-cta__buttons">
+                            <Button href={WA} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
+                                💬 WhatsApp
+                            </Button>
+                            <Button href="#formulario" variant="outline" size="lg">
+                                📅 Formulario
+                            </Button>
+                            <Button href="tel:684657760" variant="ghost" size="lg">
+                                📞 Llamar
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </section>

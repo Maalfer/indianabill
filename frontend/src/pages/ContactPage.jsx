@@ -13,14 +13,31 @@ export default function ContactPage() {
     const handleChange = (e) =>
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        setStatus('sending')
+        try {
+            await fetch(`${API}/api/leads/`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    nombre: form.nombre,
+                    email: form.email || undefined,
+                    telefono: form.telefono || undefined,
+                    comentarios: form.mensaje || undefined,
+                    servicio: form.servicio || 'contacto',
+                    origen: 'web',
+                }),
+            })
+        } catch {
+            // silently continue — WA fallback ensures the inquiry is not lost
+        }
         const lines = [`Hola, soy ${form.nombre} (${form.email})`]
         if (form.telefono) lines.push(`Teléfono: ${form.telefono}`)
         if (form.servicio) lines.push(`Servicio: ${form.servicio}`)
         lines.push('', form.mensaje)
-        const url = `https://api.whatsapp.com/send?phone=34984000000&text=${encodeURIComponent(lines.join('\n'))}`
-        window.open(url, '_blank')
+        const waUrl = `https://api.whatsapp.com/send?phone=34684657760&text=${encodeURIComponent(lines.join('\n'))}`
+        window.open(waUrl, '_blank')
         setStatus('ok')
     }
 
@@ -134,14 +151,14 @@ export default function ContactPage() {
                                 <span className="contact-info__icon">📍</span>
                                 <div>
                                     <strong>Dirección</strong>
-                                    <p>Calle Mayor, 1<br />Gijón, Asturias</p>
+                                    <p>C/ Espronceda, 17<br />Gijón, Asturias</p>
                                 </div>
                             </div>
                             <div className="contact-info__item">
                                 <span className="contact-info__icon">📞</span>
                                 <div>
                                     <strong>Teléfono</strong>
-                                    <p>+34 984 000 000</p>
+                                    <p><a href="tel:985374167">985 374 167</a> / <a href="tel:684657760">684 657 760</a></p>
                                 </div>
                             </div>
                             <div className="contact-info__item">
@@ -161,7 +178,7 @@ export default function ContactPage() {
                         </div>
 
                         <Button
-                            href="https://wa.me/34984000000"
+                            href="https://wa.me/34684657760"
                             target="_blank"
                             rel="noopener noreferrer"
                             variant="primary"

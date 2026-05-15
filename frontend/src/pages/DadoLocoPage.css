@@ -1,0 +1,134 @@
+.dado-hero {
+    background: linear-gradient(135deg, #fff3e0 0%, var(--color-white) 60%);
+    padding: 5rem 0 3.5rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.dado-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--color-yellow);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-bold);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.dado-hero h1 { margin-bottom: 0.75rem; }
+
+.dado-hero p {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    max-width: 560px;
+    margin: 0 auto 2rem;
+}
+
+.dado-como-funciona {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.dado-paso {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.dado-paso__num {
+    width: 54px;
+    height: 54px;
+    background: var(--color-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-extra);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.dado-paso__num--gold {
+    background: #f5a623;
+    font-size: 1.8rem;
+}
+
+.dado-paso__content h3 { margin-bottom: 0.4rem; font-size: 1.05rem; }
+.dado-paso__content p { color: var(--color-gray); font-size: 0.95rem; }
+
+.dado-visual { background: var(--color-light-gray); }
+
+.dado-visual__content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dado-visual__dice { font-size: 8rem; text-align: center; }
+.dado-visual__text h2 { margin-bottom: 1rem; }
+.dado-visual__text p { color: var(--color-dark); margin-bottom: 1rem; }
+.dado-visual__text p:last-child { margin-bottom: 0; }
+
+.dado-condiciones { background: var(--color-white); }
+
+.dado-condiciones__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.dado-condicion-card {
+    background: var(--color-light-gray);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    text-align: center;
+    border-top: 3px solid var(--color-green);
+}
+
+.dado-condicion-card--highlight {
+    border-top-color: var(--color-yellow);
+    background: #fffdf0;
+}
+
+.dado-condicion-card span { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+.dado-condicion-card h3 { margin-bottom: 0.5rem; font-size: 1rem; }
+.dado-condicion-card p { color: var(--color-gray); font-size: 0.9rem; }
+
+.dado-cta {
+    background: var(--color-yellow);
+    padding: 4rem 0;
+}
+
+.dado-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.dado-cta h2 { color: white; margin-bottom: 0.5rem; }
+.dado-cta p { color: rgba(255,255,255,0.9); }
+
+@media (max-width: 900px) {
+    .dado-como-funciona { grid-template-columns: 1fr; }
+    .dado-visual__content { grid-template-columns: 1fr; text-align: center; }
+    .dado-visual__dice { font-size: 5rem; }
+}
+
+@media (max-width: 600px) {
+    .dado-condiciones__grid { grid-template-columns: 1fr; }
+    .dado-cta__inner { flex-direction: column; text-align: center; }
+}

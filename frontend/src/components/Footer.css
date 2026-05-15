@@ -11,7 +11,7 @@
 
 .footer__inner {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 3rem;
     padding: 4rem 3rem 3rem 3rem;
     max-width: 100%;
@@ -98,15 +98,65 @@
     color: #aaa;
 }
 
+.footer__contact li a {
+    color: #aaa;
+    transition: var(--transition);
+}
+
+.footer__contact li a:hover { color: var(--color-green); }
+
+.footer__hours-inline {
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1rem;
+}
+
+.footer__hours-inline strong {
+    display: block;
+    color: var(--color-white);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+}
+
+.footer__hours-inline p {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 0.2rem;
+}
+
 .footer__bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    text-align: center;
-    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .footer__bottom p {
     font-size: 0.85rem;
     color: #666;
+}
+
+.footer__credit {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.footer__credit-name {
+    color: var(--color-green);
+    font-weight: var(--font-weight-semi);
+}
+
+@media (max-width: 540px) {
+    .footer__bottom {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.2rem;
+    }
 }
 
 @media (max-width: 900px) {

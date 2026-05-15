@@ -1,30 +1,57 @@
 import Button from './Button'
 import './HeroSection.css'
 
-/**
- * HeroSection — sección principal de bienvenida.
- */
-export default function HeroSection({
-    heading = 'Ven a disfrutar con tus amigos al Indiana Bill',
-}) {
+const WA = 'https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20quiero%20consultar%20disponibilidad%20para%20un%20cumplea%C3%B1os%20en%20Indiana%20Bill%20Gij%C3%B3n%20%F0%9F%8E%82'
+
+export default function HeroSection() {
     return (
         <section className="hero">
-            {/* Decorative blobs */}
             <div className="hero__blob hero__blob--1" aria-hidden="true" />
             <div className="hero__blob hero__blob--2" aria-hidden="true" />
 
             <div className="container hero__content">
-                <span className="hero__badge">🎉 Diversión para todas las edades</span>
-                <h1 className="hero__heading fade-up">{heading}</h1>
+                <span className="hero__badge">🎉 Parque infantil cubierto en el centro de Gijón</span>
 
-                <p className="hero__sub fade-up">
-                    En el <strong>Indiana Bill de Gijón</strong> encontrarás todo lo que necesitas para divertirte. <strong>Celebraciones de cumpleaños o eventos especiales para adultos en un local de más de 1300 metros cuadrados situado en el centro de la ciudad.</strong> Toboganes, parque de bolas, pista de fútbol, cafetería o comedor…
+                <h1 className="hero__heading">
+                    Cumpleaños infantiles{' '}
+                    <span className="hero__heading-accent">inolvidables</span>{' '}
+                    en Gijón
+                </h1>
+
+                <p className="hero__sub">
+                    Más de <strong>4 horas reales de diversión</strong> sin preocupaciones.
+                    Nos encargamos de todo para que los peques disfruten y los padres descansen.
                 </p>
-                <p className="hero__sub fade-up">
-                    Todo lo que buscas para tener un recuerdo inolvidable, está aquí.
+                <p className="hero__sub hero__sub--small">
+                    Parque cubierto de 1.300 m² · Merienda · Tarta · Monitores · Hinchables · Piscina de bolas
                 </p>
 
+                <div className="hero__actions">
+                    <Button href="/cumpleanos" variant="primary" size="lg">
+                        🎂 Reservar cumpleaños
+                    </Button>
+                    <Button href="/cumpleanos#precios" variant="outline" size="lg">
+                        Ver precios
+                    </Button>
+                    <a href={WA} target="_blank" rel="noopener noreferrer" className="hero__wa-btn">
+                        💬 WhatsApp
+                    </a>
+                </div>
 
+                <div className="hero__trust">
+                    <div className="hero__trust-item">
+                        <span>⭐</span>
+                        <span>+500 cumpleaños celebrados</span>
+                    </div>
+                    <div className="hero__trust-item">
+                        <span>📍</span>
+                        <span>Centro de Gijón</span>
+                    </div>
+                    <div className="hero__trust-item">
+                        <span>🏠</span>
+                        <span>Espacio privado y cubierto</span>
+                    </div>
+                </div>
             </div>
         </section>
     )

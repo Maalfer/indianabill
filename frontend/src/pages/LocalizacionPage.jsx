@@ -146,8 +146,8 @@ export default function LocalizacionPage() {
                         
                         <div className="map-info">
                             <h3>Indiana Bill Gijón</h3>
-                            <p>Calle Principal, 123</p>
-                            <p>33201 Gijón, Asturias</p>
+                            <p>C/ Espronceda, 17</p>
+                            <p>33204 Gijón, Asturias</p>
                             <div className={`map-iframe-container ${isDarkTheme ? 'dark-theme' : ''}`}>
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1446.2634612041481!2d-5.668274392070994!3d43.533056997928995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd367c8ad39fcc63%3A0x74b8b98e4226259c!2sIndiana+Bill+Gij%C3%B3n!5e0!3m2!1ses!2ses!4v1539452001187"
@@ -177,7 +177,7 @@ export default function LocalizacionPage() {
                         <div className="cta-buttons">
                             <Button
                                 href="tel:985374167"
-                                variant="secondary"
+                                variant="outline"
                                 size="lg"
                             >
                                 📞 Llamar ahora

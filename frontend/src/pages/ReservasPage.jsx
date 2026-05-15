@@ -15,7 +15,8 @@ export default function ReservasPage() {
   }
   
   const firstDayOfMonth = (date) => {
-    return new Date(date.getFullYear(), date.getMonth(), 1).getDay()
+    const day = new Date(date.getFullYear(), date.getMonth(), 1).getDay()
+    return (day + 6) % 7 // Monday = 0
   }
   
   const generateCalendarDays = () => {
@@ -76,7 +77,7 @@ export default function ReservasPage() {
       `¡Hola! \n\nQuiero hacer una reserva para el día ${formattedDate}.\n\n¿Podrían confirmarme la disponibilidad?\n\nGracias! `
     )
     
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=34984000000&text=${message}`
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=34684657760&text=${message}`
     window.open(whatsappUrl, '_blank')
   }
   
@@ -105,7 +106,7 @@ export default function ReservasPage() {
           
           <div className="calendar-grid">
             {/* Day headers */}
-            {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'].map(day => (
+            {['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'].map(day => (
               <div key={day} className="calendar-day-header">
                 {day}
               </div>

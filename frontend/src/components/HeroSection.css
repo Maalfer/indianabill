@@ -1,18 +1,18 @@
 .hero {
-    min-height: 60vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    background: var(--color-white);
-    padding: 6rem 0 2rem;
+    background: linear-gradient(135deg, #f0faf4 0%, #ffffff 60%);
+    padding: 7rem 0 3rem;
 }
 
 .hero__blob {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.18;
+    opacity: 0.2;
     pointer-events: none;
 }
 
@@ -39,108 +39,118 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .hero__badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     background: var(--color-green-light);
     color: var(--color-green-dark);
     font-size: 0.9rem;
     font-weight: var(--font-weight-bold);
-    padding: 0.4rem 1.1rem;
+    padding: 0.45rem 1.2rem;
     border-radius: 50px;
-    border: 1px solid rgba(0, 168, 81, 0.2);
+    border: 1px solid rgba(0, 168, 81, 0.25);
 }
 
 .hero__heading {
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-size: clamp(2.2rem, 5.5vw, 3.8rem);
     font-weight: var(--font-weight-extra);
     line-height: 1.1;
-    max-width: 800px;
+    max-width: 780px;
+    color: var(--color-black);
+}
+
+.hero__heading-accent {
     color: var(--color-green);
 }
 
 .hero__sub {
-    font-size: 1.15rem;
-    color: var(--color-black);
-    max-width: 800px;
-    line-height: 1.8;
-    text-align: left;
-    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    max-width: 640px;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.hero__sub--small {
+    font-size: 0.97rem;
+    color: var(--color-gray);
 }
 
 .hero__actions {
     display: flex;
-    gap: 1rem;
+    gap: 0.85rem;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 0.5rem;
 }
 
-/* Cards */
-.hero__cards {
+.hero__trust {
     display: flex;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 2rem;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 0.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 640px;
 }
 
-.hero__card_btn {
-    background: var(--color-green);
-    color: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem 2rem;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.hero__trust-item {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-width: 260px;
-    box-shadow: 0 4px 15px rgba(0, 168, 81, 0.2);
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    color: var(--color-gray);
+    font-weight: var(--font-weight-semi);
 }
 
-.hero__card_btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 168, 81, 0.3);
-}
-
-.hero__card_btn--secondary {
-    background: var(--color-yellow);
-    color: var(--color-black);
-    box-shadow: 0 4px 15px rgba(245, 166, 35, 0.2);
-}
-
-.hero__card_btn--secondary:hover {
-    box-shadow: 0 8px 25px rgba(245, 166, 35, 0.3);
-}
-
-.hero__card_content h3 {
-    margin: 0;
-    font-size: 1.3rem;
+.hero__wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
     font-weight: var(--font-weight-bold);
-    color: inherit;
+    border-radius: 50px;
+    border: 2px solid #25D366;
+    background: transparent;
+    color: #1a9c4e;
+    text-decoration: none;
+    transition: var(--transition);
+    white-space: nowrap;
 }
 
-.hero__card_content span {
-    font-size: 0.95rem;
-    opacity: 0.9;
-    margin-top: 0.4rem;
-    display: block;
+.hero__wa-btn:hover {
+    background: #25D366;
+    color: white;
+    transform: translateY(-3px);
 }
 
-@media (max-width: 600px) {
-    .hero__cards {
-        flex-direction: column;
-        width: 100%;
-        gap: 1rem;
+@media (max-width: 640px) {
+    .hero {
+        padding: 6rem 0 2.5rem;
+        min-height: auto;
     }
 
-    .hero__card_btn {
+    .hero__actions {
+        flex-direction: column;
         width: 100%;
+    }
+
+    .hero__actions .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero__trust {
+        gap: 0.75rem;
+        flex-direction: column;
+        align-items: center;
     }
 }

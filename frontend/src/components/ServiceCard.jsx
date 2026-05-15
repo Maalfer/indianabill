@@ -14,7 +14,7 @@ export default function ServiceCard({ id, titulo, descripcion, precio, icono, co
             <p className="service-card__desc">{descripcion}</p>
             <div className="service-card__footer">
                 <span className="service-card__price">{precio}</span>
-                <Link to="/servicios" className="service-card__link">
+                <Link to="/contacto" className="service-card__link">
                     Saber más →
                 </Link>
             </div>
