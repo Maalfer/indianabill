@@ -4,6 +4,7 @@ const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 const AuthContext = createContext()
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
   const context = useContext(AuthContext)
   if (!context) {
@@ -79,14 +80,14 @@ export function AuthProvider({ children }) {
     }
   }
 
-  const register = async (username, email, password) => {
+  const register = async (username, email, password, confirmPassword) => {
     try {
       const response = await fetch(`${API}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, email, password })
+        body: JSON.stringify({ username, email, password, confirm_password: confirmPassword ?? password })
       })
 
       if (!response.ok) {

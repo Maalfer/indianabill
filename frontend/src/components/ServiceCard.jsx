@@ -4,7 +4,7 @@ import './ServiceCard.css'
 /**
  * ServiceCard — tarjeta de servicio con color de acento, icono, título y descripción.
  */
-export default function ServiceCard({ id, titulo, descripcion, precio, icono, color }) {
+export default function ServiceCard({ titulo, descripcion, precio, icono, color }) {
     return (
         <article className="service-card" style={{ '--card-accent': color }}>
             <div className="service-card__icon" aria-hidden="true">

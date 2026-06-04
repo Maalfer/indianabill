@@ -109,6 +109,30 @@
 
 .privadas-opciones { background: var(--color-light-gray); }
 
+.privadas-opciones__intro {
+    max-width: 760px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    color: var(--color-dark);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.privadas-opciones__nota {
+    max-width: 760px;
+    margin: 1.5rem auto 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-gray);
+}
+
+.privadas-form__ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-self: start;
+}
+
 .privadas-opciones__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -257,6 +281,24 @@
 @media (max-width: 600px) {
     .privadas-tipos { grid-template-columns: 1fr; }
     .privadas-hero__ctas { flex-direction: column; align-items: stretch; }
-    .privadas-hero__tel { text-align: center; justify-content: center; }
-    .privadas-cta__inner { flex-direction: column; text-align: center; }
+    .privadas-hero__ctas .btn,
+    .privadas-hero__tel { width: 100%; text-align: center; justify-content: center; }
+    .privadas-cta__inner { flex-direction: column; text-align: center; align-items: stretch; }
+    .privadas-cta__inner .btn { width: 100%; justify-content: center; }
+}
+
+/* ── VÍDEO FIESTAS PRIVADAS ──────────────────────────────────────────────── */
+.privadas-video__frame {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.privadas-video__video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #0b0b0b;
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 }

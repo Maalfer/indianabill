@@ -195,5 +195,27 @@
 @media (max-width: 600px) {
     .martes-hero__ctas { flex-direction: column; align-items: stretch; }
     .martes-hero__tel { text-align: center; justify-content: center; }
-    .martes-cta__inner { flex-direction: column; text-align: center; }
+    .martes-cta__inner { flex-direction: column; text-align: center; align-items: stretch; }
+    .martes-cta__inner .btn { width: 100%; justify-content: center; }
+}
+
+/* ── FOTO MARTES EN FAMILIA ──────────────────────────────────────────────── */
+.martes-que-es__visual {
+    background: none !important;
+    padding: 0 !important;
+    text-align: left;
+}
+
+.martes-que-es__photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 900px) {
+    .martes-que-es__visual { display: block; }
+    .martes-que-es__photo { aspect-ratio: 16/9 !important; max-height: 320px; }
 }

@@ -15,8 +15,11 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 from ..database import get_db
+from ..config import settings
+from ..routers.admin import get_admin_user
 from ..routers.auth import get_current_user
 from ..models.user import User
+from ..services import email_service
 
 router = APIRouter(prefix="/api/automation", tags=["automation"])
 logger = logging.getLogger(__name__)
@@ -27,31 +30,31 @@ def automation_health():
     """Devuelve qué servicios de automatización están configurados."""
     return {
         "email": {
-            "configured": bool(
-                os.environ.get("SENDGRID_API_KEY") or
-                os.environ.get("SMTP_HOST")
-            ),
-            "provider": (
-                "sendgrid" if os.environ.get("SENDGRID_API_KEY")
-                else "smtp" if os.environ.get("SMTP_HOST")
-                else None
-            ),
-        },
-        "whatsapp": {
-            "configured": bool(
-                os.environ.get("TWILIO_ACCOUNT_SID") or
-                os.environ.get("WA_ACCESS_TOKEN")
-            ),
-            "provider": (
-                "twilio" if os.environ.get("TWILIO_ACCOUNT_SID")
-                else "meta" if os.environ.get("WA_ACCESS_TOKEN")
-                else None
-            ),
+            "configured": email_service.email_configured(),
+            "provider": "smtp" if email_service.email_configured() else None,
         },
         "stripe": {
-            "configured": bool(os.environ.get("STRIPE_SECRET_KEY")),
+            "configured": bool(settings.stripe_secret_key),
+        },
+        "automation": {
+            "configured": bool(settings.automation_token),
         },
     }
+
+
+@router.post("/cron/reminders")
+def cron_reminders(request: Request, db: Session = Depends(get_db)):
+    """Ejecuta los recordatorios de fianza. Lo llama el cron con X-Automation-Token."""
+    token = request.headers.get("x-automation-token", "")
+    if not settings.automation_token or token != settings.automation_token:
+        raise HTTPException(status_code=403, detail="Token de automatización inválido")
+    return email_service.run_reminders(db)
+
+
+@router.post("/reminders/run")
+def reminders_run(admin_user: User = Depends(get_admin_user), db: Session = Depends(get_db)):
+    """Dispara los recordatorios manualmente desde el panel. Solo admin."""
+    return email_service.run_reminders(db)
 
 
 @router.post("/webhook/whatsapp")
@@ -84,62 +87,3 @@ async def whatsapp_webhook(request: Request):
     return {"status": "ok"}
 
 
-@router.post("/jobs/birthday-check")
-async def trigger_birthday_check(
-    db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
-):
-    """
-    Dispara manualmente el job de recordatorios de cumpleaños.
-    Solo accesible para admins. Normalmente lo llamaría un cron.
-
-    TODO: Activar cuando email_service.py esté configurado.
-    """
-    if current_user.role != "admin":
-        raise HTTPException(status_code=403, detail="Solo administradores")
-
-    from ..services.email_service import job_birthday_reminders
-    result = await job_birthday_reminders(db)
-    return result
-
-
-@router.post("/jobs/send-pending")
-async def send_pending_emails(
-    db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
-):
-    """
-    Envía los EmailJob pendientes. Solo admins.
-
-    TODO: Implementar cuando email_service.py esté configurado.
-    """
-    if current_user.role != "admin":
-        raise HTTPException(status_code=403, detail="Solo administradores")
-
-    # from ..models.email_job import EmailJob, EmailJobEstado
-    # from ..services.email_service import send_email, build_birthday_reminder_email
-    # import json
-    # from datetime import datetime, timezone
-    #
-    # pending = db.query(EmailJob).filter(EmailJob.estado == EmailJobEstado.PENDIENTE).all()
-    # sent = 0
-    # for job in pending:
-    #     try:
-    #         datos = json.loads(job.datos_json or "{}")
-    #         email_data = build_birthday_reminder_email(
-    #             job.destinatario_nombre, datos.get("nombre_nino", ""), datos.get("dias", 30)
-    #         )
-    #         ok = await send_email(
-    #             job.destinatario_email, job.destinatario_nombre,
-    #             email_data["subject"], email_data["html"]
-    #         )
-    #         job.estado = EmailJobEstado.ENVIADO if ok else EmailJobEstado.FALLIDO
-    #         job.enviado_at = datetime.now(timezone.utc)
-    #         sent += 1 if ok else 0
-    #     except Exception as e:
-    #         logger.error(f"Error enviando job {job.id}: {e}")
-    #         job.estado = EmailJobEstado.FALLIDO
-    # db.commit()
-    # return {"sent": sent, "total": len(pending)}
-
-    return {"status": "stub", "message": "Configura el servicio de email primero"}

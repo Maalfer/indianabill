@@ -237,3 +237,42 @@ p {
 [data-theme="dark"] p {
   color: var(--color-dark);
 }
+
+/* ── MOBILE GLOBAL IMPROVEMENTS ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    /* Reduce section padding on very small screens */
+    .section {
+        padding: 2rem 0;
+    }
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    /* Section headers smaller on tiny screens */
+    .section-header p {
+        font-size: 1rem;
+    }
+    /* CTA sections keep more breathing room */
+    .home-cta,
+    .home-wa-cta,
+    .home-form-section {
+        padding: 3rem 0;
+    }
+}
+
+/* ── FOCUS VISIBLE for keyboard/accessibility ───────────────────────────────── */
+:focus-visible {
+    outline: 3px solid var(--color-green);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ── SMOOTH SCROLLING respects motion preferences ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* ── IMAGES: prevent horizontal overflow on all pages ───────────────────────── */
+img, video {
+    max-width: 100%;
+}

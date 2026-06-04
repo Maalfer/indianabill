@@ -8,6 +8,8 @@
     background: var(--color-white);
     border-top: 1px solid #ddd;
     box-shadow: 0 -4px 16px rgba(0,0,0,0.12);
+    /* Safe area for iPhone home indicator */
+    padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 .mobile-bar__btn {
@@ -17,7 +19,8 @@
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
-    padding: 0.75rem 0.5rem;
+    padding: 0.8rem 0.5rem;
+    min-height: 56px;
     text-decoration: none;
     color: var(--color-white);
     font-weight: var(--font-weight-bold);
@@ -43,6 +46,6 @@
 
     /* Añade margen inferior al main para no tapar contenido */
     main {
-        padding-bottom: 70px !important;
+        padding-bottom: max(70px, calc(60px + env(safe-area-inset-bottom, 0px))) !important;
     }
 }

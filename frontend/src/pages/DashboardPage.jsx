@@ -26,9 +26,9 @@ export default function DashboardPage() {
           <div className="dashboard-card">
             <div className="card-icon">🎉</div>
             <h3>Mis Reservas</h3>
-            <p>Consulta y gestiona tus reservas de fiestas</p>
-            <Link to="/reservas" className="card-button">
-              Gestionar Reservas
+            <p>Consulta el estado de tus reservas y la fianza</p>
+            <Link to="/panel" className="card-button">
+              Ver mis reservas
             </Link>
           </div>
 

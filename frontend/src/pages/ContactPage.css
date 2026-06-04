@@ -36,6 +36,24 @@
     align-items: start;
 }
 
+/* CTAs principales */
+.contact-cta-wrap h2 {
+    margin-bottom: 1rem;
+}
+
+.contact-cta-wrap__lead {
+    color: var(--color-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.contact-cta-wrap__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    max-width: 420px;
+}
+
 /* Form */
 .contact-form-wrap h2 {
     margin-bottom: 1.5rem;

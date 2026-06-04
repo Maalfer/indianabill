@@ -6,17 +6,16 @@ import './Navbar.css'
 const NAV_LINKS = [
     { to: '/', label: 'Inicio' },
     { to: '/cumpleanos', label: 'Cumpleaños infantiles' },
-    { to: '/juego-libre', label: 'Juego libre' },
     { to: '/fiestas-privadas', label: 'Fiestas privadas' },
+    { to: '/juego-libre', label: 'Juego libre' },
     { to: '/instalaciones', label: 'Instalaciones' },
-    { to: '/blog', label: 'Blog' },
     { to: '/contacto', label: 'Contacto' },
 ]
 
 const PROMOS = [
-    { to: '/martes-en-familia', label: '👨‍👩‍👧‍👦 Martes en Familia' },
-    { to: '/dado-loco', label: '🎲 Dado Loco' },
-    { to: '/bono-indy', label: '🎟️ Bono Indy' },
+    { to: '/martes-en-familia', label: 'Martes en Familia' },
+    { to: '/dado-loco', label: 'Dado Loco' },
+    { to: '/bono-indy', label: 'Bono Indy' },
 ]
 
 export default function Navbar() {
@@ -99,6 +98,21 @@ export default function Navbar() {
                         )}
                     </div>
 
+                    {/* Auth: Login/Registro (no autenticado) */}
+                    {!loading && !isAuthenticated && (
+                        <>
+                            <NavLink
+                                to="/login"
+                                className={({ isActive }) => `navbar__link${isActive ? ' navbar__link--active' : ''}`}
+                            >
+                                Iniciar sesión
+                            </NavLink>
+                            <NavLink to="/register" className="navbar__register">
+                                Registrarse
+                            </NavLink>
+                        </>
+                    )}
+
                     {/* Perfil (solo autenticados) */}
                     {!loading && isAuthenticated && (
                         <div className="navbar__dropdown" ref={profileRef}>
@@ -106,10 +120,11 @@ export default function Navbar() {
                                 className={`navbar__link navbar__link--dropdown${profileOpen ? ' navbar__link--active' : ''}`}
                                 onClick={() => setProfileOpen(!profileOpen)}
                             >
-                                Perfil <span className={`navbar__arrow${profileOpen ? ' navbar__arrow--open' : ''}`}>▾</span>
+                                {user?.username || 'Mi cuenta'} <span className={`navbar__arrow${profileOpen ? ' navbar__arrow--open' : ''}`}>▾</span>
                             </button>
                             {profileOpen && (
                                 <div className="navbar__dropdown-menu">
+                                    <NavLink to="/panel" className="navbar__dropdown-item" onClick={() => setProfileOpen(false)}>Mis reservas</NavLink>
                                     <NavLink to="/dashboard" className="navbar__dropdown-item" onClick={() => setProfileOpen(false)}>Dashboard</NavLink>
                                     <NavLink to="/profile" className="navbar__dropdown-item" onClick={() => setProfileOpen(false)}>Mi perfil</NavLink>
                                     {user?.role === 'admin' && (
@@ -160,11 +175,31 @@ export default function Navbar() {
                     </NavLink>
                 ))}
 
+                {!loading && !isAuthenticated && (
+                    <>
+                        <div className="navbar__drawer-section">Acceder</div>
+                        <NavLink
+                            to="/login"
+                            className={({ isActive }) => `navbar__drawer-link${isActive ? ' navbar__drawer-link--active' : ''}`}
+                            onClick={close}
+                        >
+                            Iniciar sesión
+                        </NavLink>
+                        <NavLink to="/register" className="navbar__drawer-link navbar__drawer-register" onClick={close}>
+                            Registrarse
+                        </NavLink>
+                    </>
+                )}
+
                 {!loading && isAuthenticated && (
                     <>
                         <div className="navbar__drawer-section">Mi cuenta</div>
+                        <NavLink to="/panel" className={({ isActive }) => `navbar__drawer-link${isActive ? ' navbar__drawer-link--active' : ''}`} onClick={close}>Mis reservas</NavLink>
                         <NavLink to="/dashboard" className={({ isActive }) => `navbar__drawer-link${isActive ? ' navbar__drawer-link--active' : ''}`} onClick={close}>Dashboard</NavLink>
                         <NavLink to="/profile" className={({ isActive }) => `navbar__drawer-link${isActive ? ' navbar__drawer-link--active' : ''}`} onClick={close}>Mi perfil</NavLink>
+                        {user?.role === 'admin' && (
+                            <NavLink to="/admin" className={({ isActive }) => `navbar__drawer-link${isActive ? ' navbar__drawer-link--active' : ''}`} onClick={close}>Admin</NavLink>
+                        )}
                         <button onClick={handleLogout} className="navbar__drawer-link navbar__drawer-logout">Cerrar sesión</button>
                     </>
                 )}

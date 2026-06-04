@@ -10,6 +10,9 @@ class EmailJobTipo(enum.Enum):
     LEAD_FOLLOWUP = "lead_followup"
     RESERVA_CONFIRMADA = "reserva_confirmada"
     WELCOME = "welcome"
+    FIANZA_REMINDER = "fianza_reminder"
+    FOLLOWUP_NO_FIANZA = "followup_no_fianza"
+    BUSINESS_NOTIFY = "business_notify"
 
 
 class EmailJobEstado(enum.Enum):

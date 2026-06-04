@@ -1,4 +1,5 @@
 import Button from '../components/Button'
+import Seo from '../components/Seo'
 import './BonoIndyPage.css'
 
 const WA = 'https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20quiero%20solicitar%20el%20Bono%20Indy%20en%20Indiana%20Bill%20Gij%C3%B3n'
@@ -6,9 +7,14 @@ const WA = 'https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20quier
 export default function BonoIndyPage() {
     return (
         <>
+            <Seo
+                title="Bono Indy — 12 horas de juego por 39€ | Indiana Bill Gijón"
+                description="El Bono Indy de Indiana Bill Gijón: 12 horas de juego libre por 39€, válido martes, miércoles y jueves. La opción más económica para venir entre semana."
+                path="/bono-indy"
+            />
             <div className="bono-hero">
                 <div className="container">
-                    <span className="bono-hero__badge">🎟️ Para familias que vienen entre semana</span>
+                    <span className="bono-hero__badge">Para familias que vienen entre semana</span>
                     <h1>Bono Indy</h1>
                     <p>12 horas de juego libre por 39€. La opción más económica si venís varios días entre semana.</p>
                     <div className="bono-hero__price-badge">
@@ -17,9 +23,9 @@ export default function BonoIndyPage() {
                     </div>
                     <div className="bono-hero__ctas">
                         <Button href={WA} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
-                            💬 Solicitar Bono Indy
+                            Solicitar Bono Indy
                         </Button>
-                        <a href="tel:684657760" className="bono-hero__tel">📞 Llamar</a>
+                        <a href="tel:684657760" className="bono-hero__tel">Llamar</a>
                     </div>
                 </div>
             </div>
@@ -120,7 +126,7 @@ export default function BonoIndyPage() {
                         <p>Escríbenos y te damos todos los detalles</p>
                     </div>
                     <Button href={WA} target="_blank" rel="noopener noreferrer" variant="ghost" size="lg">
-                        💬 Solicitar Bono Indy por WhatsApp
+                        Solicitar Bono Indy por WhatsApp
                     </Button>
                 </div>
             </section>

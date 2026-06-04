@@ -89,9 +89,19 @@
 .instalaciones-zona-card h3 { margin-bottom: 0.5rem; font-size: 1rem; }
 .instalaciones-zona-card p { color: var(--color-gray); font-size: 0.85rem; }
 
-.instalaciones-video .video-iframe {
+.instalaciones-video {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.instalaciones-video__video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #0b0b0b;
     border-radius: var(--radius-lg);
-    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 }
 
 .instalaciones-ctas { background: var(--color-light-gray); }
@@ -137,4 +147,13 @@
 
 @media (max-width: 600px) {
     .instalaciones-zonas__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .instalaciones-zona-card {
+        padding: 1rem;
+    }
+    .instalaciones-intro {
+        padding: 0;
+    }
 }

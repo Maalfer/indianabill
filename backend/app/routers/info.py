@@ -108,47 +108,99 @@ def get_faq() -> FAQResponse:
             FAQItem(
                 pregunta="¿Cómo se reserva?",
                 respuesta=(
-                    "Puedes reservar a través de nuestro formulario de contacto, "
-                    "por teléfono o escribiéndonos por WhatsApp. Te confirmaremos "
-                    "disponibilidad en menos de 24 horas."
+                    "Muy fácil. Escríbenos por WhatsApp, llámanos o pásate por el local con la fecha que quieres. "
+                    "Te confirmamos disponibilidad y, para oficializar la reserva del cumpleaños, se deja una fianza de 20€. "
+                    "Una vez abonada la fianza, la fecha queda confirmada."
                 ),
             ),
             FAQItem(
-                pregunta="¿Qué edades pueden venir a jugar?",
+                pregunta="¿Qué edades pueden venir?",
                 respuesta=(
-                    "El área de juego infantil está pensada para niños de 2 a 12 años. "
-                    "Para adolescentes y adultos disponemos de espacios adaptados "
-                    "y eventos privados."
+                    "El parque infantil está pensado para niños de 0 a 12 años. "
+                    "Los martes, en nuestro formato Martes en Familia, los padres y hermanos mayores "
+                    "también pueden jugar acompañando al menor. "
+                    "Para adolescentes, adultos o celebraciones especiales, la mejor opción son nuestras Fiestas Privadas."
                 ),
             ),
             FAQItem(
-                pregunta="¿Hay menús para alérgicos o especiales?",
+                pregunta="¿Dónde celebrar cumpleaños infantiles en Gijón?",
                 respuesta=(
-                    "Sí, disponemos de opciones para celíacos, alérgicos al gluten "
-                    "y otros requisitos dietéticos. Consúltanos al hacer la reserva."
+                    "Indiana Bill lleva más de 25 años siendo el lugar de referencia para cumpleaños infantiles en Gijón. "
+                    "Más de 1.000 cumpleaños al año en un espacio de más de 1.300 m² cubiertos en pleno centro de la ciudad."
                 ),
             ),
             FAQItem(
-                pregunta="¿Hay mínimo o máximo de personas para una reserva?",
+                pregunta="¿Qué incluye el cumpleaños?",
                 respuesta=(
-                    "Para cumpleaños infantiles el mínimo es de 8 niños. "
-                    "Para eventos privados de adultos, consúltanos sin compromiso, "
-                    "nos adaptamos a grupos de todos los tamaños."
+                    "El cumpleaños incluye acceso ilimitado al parque durante toda la celebración, merienda completa, "
+                    "bebida, tarta con velas, regalo para el anfitrión y monitores especializados. "
+                    "Nosotros nos encargamos de todo para que vosotros solo tengáis que disfrutar."
+                ),
+            ),
+            FAQItem(
+                pregunta="¿Cuánto dura el cumpleaños?",
+                respuesta=(
+                    "La celebración dura aproximadamente 4 horas. "
+                    "Los niños tienen acceso ilimitado al parque durante todo ese tiempo."
+                ),
+            ),
+            FAQItem(
+                pregunta="¿Hay tiempo límite en el juego libre?",
+                respuesta=(
+                    "En el juego libre puedes disfrutar todo lo que quieras dentro del horario de apertura del día. "
+                    "No hay contador de tiempo ni límite por sesión."
+                ),
+            ),
+            FAQItem(
+                pregunta="¿Se puede venir sin reserva?",
+                respuesta=(
+                    "Para el juego libre no hace falta reserva, puedes venir directamente. "
+                    "Para cumpleaños y fiestas privadas sí es necesario reservar con antelación, "
+                    "ya que las fechas se agotan rápido."
+                ),
+            ),
+            FAQItem(
+                pregunta="¿Nos adaptamos al tamaño del grupo?",
+                respuesta=(
+                    "Nos adaptamos al grupo y al presupuesto para que podáis celebrar y pasarlo bien. "
+                    "La idea es que los peques disfruten y que podáis celebrar de la forma más cómoda posible. "
+                    "Si sois pocos o tenéis dudas, escribidnos y os orientamos."
+                ),
+            ),
+            FAQItem(
+                pregunta="¿Hay menús para alergias o intolerancias?",
+                respuesta=(
+                    "Sí. Disponemos de opciones para celíacos, alérgicos al gluten y otras necesidades dietéticas. "
+                    "Solo consúltanos al hacer la reserva y lo gestionamos sin problema."
+                ),
+            ),
+            FAQItem(
+                pregunta="¿Hay aparcamiento cerca?",
+                respuesta=(
+                    "Sí, hay opciones de aparcamiento muy cercanas al local. "
+                    "Consúltanos y te indicamos las mejores opciones según tu punto de llegada."
+                ),
+            ),
+            FAQItem(
+                pregunta="¿Se puede llevar tarta de fuera?",
+                respuesta=(
+                    "La celebración ya incluye tarta. Si queréis traer una tarta especial o personalizada, "
+                    "consúltanos y lo valoramos juntos sin problema."
+                ),
+            ),
+            FAQItem(
+                pregunta="¿Qué días suele haber más disponibilidad?",
+                respuesta=(
+                    "Los fines de semana son los más solicitados y se reservan con semanas de antelación. "
+                    "Si tienes flexibilidad, los días entre semana suelen tener más disponibilidad. "
+                    "Escríbenos y te ayudamos a encontrar la mejor fecha."
                 ),
             ),
             FAQItem(
                 pregunta="¿Es seguro venir a jugar y celebrar?",
                 respuesta=(
-                    "Todas nuestras instalaciones cumplen la normativa vigente de "
-                    "seguridad infantil. Contamos con monitores cualificados y "
-                    "el espacio está supervisado en todo momento."
-                ),
-            ),
-            FAQItem(
-                pregunta="¿Qué incluye la celebración de cumpleaños?",
-                respuesta=(
-                    "Nuestras celebraciones de cumpleaños incluyen acceso a todas las instalaciones, monitor especializado, música ambientada, y opciones de menús adaptados a todas las edades y necesidades alimenticias. "
-                    "También disponemos de packs adicionales como decoración temática, animación y fotografía profesional para hacer tu fiesta aún más especial."
+                    "Totalmente. Todas nuestras instalaciones cumplen la normativa de seguridad infantil vigente. "
+                    "Contamos con monitores cualificados y el espacio está supervisado en todo momento."
                 ),
             ),
         ]

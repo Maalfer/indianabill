@@ -96,3 +96,80 @@
     .panel-hero__ctas { flex-direction: column; align-items: stretch; }
     .panel-cta__inner { flex-direction: column; text-align: center; }
 }
+
+/* ── Panel de cliente (autenticado) ───────────────────────────────────────── */
+.panel-hero--compact { padding: 2.5rem 0; }
+.panel-hero__note { font-size: 0.85rem; opacity: 0.8; margin-top: 0.75rem; }
+
+.panel-banner {
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.panel-banner--ok { background: #dcfce7; color: #15803d; }
+.panel-banner--cancel { background: #fef3c7; color: #b45309; }
+
+.panel-empty, .panel-empty-box { text-align: center; color: #555; }
+.panel-empty-box {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 2.5rem 1.5rem;
+    margin: 0 auto 2rem;
+    max-width: 560px;
+}
+.panel-empty-box h2 { margin-bottom: 0.5rem; }
+.panel-empty-box__ctas { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.25rem; }
+
+.panel-reservas { display: flex; flex-direction: column; gap: 1.25rem; max-width: 760px; margin: 0 auto; }
+
+.reserva-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+.reserva-card__top { display: flex; align-items: center; gap: 1rem; }
+.reserva-card__icon { font-size: 2rem; }
+.reserva-card__title { flex: 1; }
+.reserva-card__title h3 { margin: 0; font-size: 1.1rem; text-transform: capitalize; }
+.reserva-card__fecha { color: #666; font-size: 0.9rem; text-transform: capitalize; }
+.reserva-card__estado { color: #fff; font-weight: 700; font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 999px; white-space: nowrap; }
+.reserva-card__meta { display: flex; gap: 1rem; color: #555; font-size: 0.9rem; margin: 0.85rem 0; flex-wrap: wrap; }
+
+.reserva-card__fianza { border-top: 1px solid #f0f0f0; padding-top: 0.85rem; }
+.reserva-fianza { font-size: 0.92rem; font-weight: 600; }
+.reserva-fianza--ok { color: #15803d; }
+.reserva-fianza--pending { display: flex; flex-direction: column; gap: 0.6rem; color: #b45309; }
+.reserva-pay-btn {
+    align-self: flex-start;
+    background: #6d28d9;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.65rem 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.reserva-pay-btn:hover { filter: brightness(1.1); }
+.reserva-pay-btn:disabled { opacity: 0.6; cursor: default; }
+.reserva-pay-btn--wa { background: #25d366; }
+
+.panel-account {
+    max-width: 760px;
+    margin: 2.5rem auto 0;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+}
+.panel-account h4 { margin: 0 0 0.75rem; }
+.panel-account p { margin: 0.2rem 0; color: #444; font-size: 0.92rem; }
+.panel-account__actions { display: flex; gap: 1rem; margin-top: 1rem; align-items: center; }
+.panel-account__link { color: #6d28d9; font-weight: 700; }
+.panel-account__logout { background: none; border: none; color: #dc2626; font-weight: 700; cursor: pointer; padding: 0; }

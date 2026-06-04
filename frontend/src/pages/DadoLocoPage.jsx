@@ -1,4 +1,5 @@
 import Button from '../components/Button'
+import Seo from '../components/Seo'
 import './DadoLocoPage.css'
 
 const WA = 'https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20Dado%20Loco%20en%20Indiana%20Bill%20Gij%C3%B3n'
@@ -6,9 +7,14 @@ const WA = 'https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20quier
 export default function DadoLocoPage() {
     return (
         <>
+            <Seo
+                title="Dado Loco — los miércoles, si sale un 6 el juego es gratis | Indiana Bill"
+                description="Cada miércoles en Indiana Bill Gijón tiras el dado: si sale un 6, el juego de ese día es gratis. Diversión asegurada para los peques."
+                path="/dado-loco"
+            />
             <div className="dado-hero">
                 <div className="container">
-                    <span className="dado-hero__badge">🎲 Cada miércoles</span>
+                    <span className="dado-hero__badge">Cada miércoles</span>
                     <h1>Dado Loco</h1>
                     <p>Los miércoles tiras el dado al entrar. Si sale un 6, el juego es gratis. Así de sencillo.</p>
                     <Button href={WA} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
@@ -54,7 +60,7 @@ export default function DadoLocoPage() {
             <section className="section dado-visual">
                 <div className="container">
                     <div className="dado-visual__content">
-                        <div className="dado-visual__dice">🎲</div>
+                        <div className="dado-visual__dice"></div>
                         <div className="dado-visual__text">
                             <h2>Una posibilidad entre 6</h2>
                             <p>
@@ -79,22 +85,22 @@ export default function DadoLocoPage() {
                     </header>
                     <div className="dado-condiciones__grid">
                         <div className="dado-condicion-card">
-                            <span>📅</span>
+                            
                             <h3>Día</h3>
                             <p>Todos los miércoles del año</p>
                         </div>
                         <div className="dado-condicion-card">
-                            <span>🕔</span>
+                            
                             <h3>Horario</h3>
                             <p>17:00 a 21:00</p>
                         </div>
                         <div className="dado-condicion-card">
-                            <span>🎯</span>
+                            
                             <h3>Válido para</h3>
                             <p>Juego libre. No aplica a cumpleaños ni fiestas privadas</p>
                         </div>
                         <div className="dado-condicion-card dado-condicion-card--highlight">
-                            <span>🎲</span>
+                            
                             <h3>El resultado</h3>
                             <p>Si sale 6 → gratis. Cualquier otro número → precio habitual de entrada</p>
                         </div>
@@ -110,7 +116,7 @@ export default function DadoLocoPage() {
                         <p>Todos los miércoles tienes una oportunidad. ¡No la desaproveches!</p>
                     </div>
                     <Button href={WA} target="_blank" rel="noopener noreferrer" variant="ghost" size="lg">
-                        💬 Preguntar por WhatsApp
+                        Preguntar por WhatsApp
                     </Button>
                 </div>
             </section>

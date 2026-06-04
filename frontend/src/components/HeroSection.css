@@ -5,7 +5,7 @@
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #f0faf4 0%, #ffffff 60%);
-    padding: 7rem 0 3rem;
+    padding: 5.5rem 0 3rem;
 }
 
 .hero__blob {
@@ -148,9 +148,112 @@
         text-align: center;
     }
 
+    .hero__wa-btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
     .hero__trust {
         gap: 0.75rem;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+/* ── HERO SPLIT LAYOUT (foto derecha) ───────────────────────────────────── */
+.hero__layout {
+    display: grid;
+    grid-template-columns: 50fr 50fr;
+    gap: 3rem;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* En desktop, el texto se alinea a la izquierda */
+.hero .hero__content {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero .hero__trust {
+    max-width: none;
+    margin: 0;
+    justify-content: flex-start;
+}
+
+.hero__photo-area {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.hero__photo-slot,
+.hero__photo-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    display: block;
+}
+
+.hero__photo-video {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: #0b0b0b;
+}
+
+/* Tablet: apilado, foto en landscape debajo del texto */
+@media (max-width: 900px) {
+    .hero__layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero .hero__content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero .hero__trust {
+        justify-content: center;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .hero__photo-area {
+        max-height: 360px;
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+    }
+
+    .hero__photo-slot {
+        aspect-ratio: 16/9 !important;
+    }
+
+    .hero__photo-img {
+        object-fit: cover;
+        max-height: 360px;
+    }
+
+    .hero__photo-video {
+        aspect-ratio: 16 / 9;
+        max-height: 360px;
+    }
+}
+
+/* Móvil: mostrar vídeo en formato landscape bonito */
+@media (max-width: 600px) {
+    .hero__photo-area {
+        display: block;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        max-height: 220px;
+        box-shadow: 0 12px 36px rgba(0,0,0,0.14);
+    }
+    .hero__photo-video {
+        aspect-ratio: 16 / 9;
+        max-height: 220px;
+        object-position: center;
     }
 }

@@ -179,5 +179,6 @@
     .bono-detalles__grid { grid-template-columns: 1fr; }
     .bono-hero__ctas { flex-direction: column; align-items: stretch; }
     .bono-hero__tel { text-align: center; justify-content: center; }
-    .bono-cta__inner { flex-direction: column; text-align: center; }
+    .bono-cta__inner { flex-direction: column; text-align: center; align-items: stretch; }
+    .bono-cta__inner .btn { width: 100%; justify-content: center; }
 }

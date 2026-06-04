@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import MobileBar from './MobileBar'
+import ChatBot from './ChatBot'
 
 export default function MainLayout() {
     return (
@@ -12,6 +13,7 @@ export default function MainLayout() {
             </main>
             <Footer />
             <MobileBar />
+            <ChatBot />
         </>
     )
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://indianabill.duckdns.org/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://indianabill.duckdns.org/cumpleanos</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://indianabill.duckdns.org/fiestas-privadas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://indianabill.duckdns.org/juego-libre</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://indianabill.duckdns.org/instalaciones</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://indianabill.duckdns.org/martes-en-familia</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://indianabill.duckdns.org/dado-loco</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://indianabill.duckdns.org/bono-indy</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://indianabill.duckdns.org/localizacion</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://indianabill.duckdns.org/contacto</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://indianabill.duckdns.org/blog</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+</urlset>

@@ -39,10 +39,27 @@
 
 .juego-precios__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    max-width: 700px;
+    max-width: 980px;
     margin: 0 auto;
+}
+
+.juego-precio-card--featured {
+    border-top-color: var(--color-red, #e63946);
+}
+
+.juego-precios__img-wrap {
+    max-width: 700px;
+    margin: 2rem auto 0;
+}
+
+.juego-precios__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
 }
 
 .juego-precio-card {
@@ -254,8 +271,33 @@
 }
 
 @media (max-width: 600px) {
-    .juego-hero__ctas { flex-direction: column; align-items: center; }
+    .juego-hero__ctas { flex-direction: column; align-items: stretch; }
+    .juego-hero__ctas .btn { width: 100%; justify-content: center; }
     .juego-horario-item { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
     .juego-horario-item__hora { text-align: left; }
     .juego-cta__inner { flex-direction: column; text-align: center; }
+}
+
+/* ── FOTO STRIP JUEGO ─────────────────────────────────────────────────────── */
+.juego-photo-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    max-height: 260px;
+    overflow: hidden;
+}
+
+.juego-photo-strip__slot,
+.juego-photo-strip__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 4/3;
+}
+
+@media (max-width: 640px) {
+    .juego-photo-strip { grid-template-columns: 1fr; max-height: none; }
+    .juego-photo-strip__slot,
+    .juego-photo-strip__img { max-height: 220px; aspect-ratio: 16/9; object-fit: cover; }
 }

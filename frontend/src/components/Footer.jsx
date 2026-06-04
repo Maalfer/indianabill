@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Newsletter from './Newsletter'
 import './Footer.css'
 
 export default function Footer() {
@@ -57,12 +58,12 @@ export default function Footer() {
                 <div className="footer__contact">
                     <h4 className="footer__nav-title">Contacto</h4>
                     <ul>
-                        <li>📍 C/ Espronceda, 17 — Gijón</li>
-                        <li><a href="tel:985374167">📞 985 374 167</a></li>
-                        <li><a href="tel:684657760">📱 684 657 760</a></li>
+                        <li>C/ Espronceda, 17 — Gijón</li>
+                        <li><a href="tel:985374167">985 374 167</a></li>
+                        <li><a href="tel:684657760">684 657 760</a></li>
                         <li>
                             <a href="https://wa.me/34684657760" target="_blank" rel="noopener noreferrer">
-                                💬 WhatsApp
+                                WhatsApp
                             </a>
                         </li>
                     </ul>
@@ -74,13 +75,25 @@ export default function Footer() {
                         <p>Lun: cerrado</p>
                     </div>
                 </div>
+
+                {/* Newsletter */}
+                <div className="footer__newsletter">
+                    <Newsletter />
+                </div>
             </div>
 
             <div className="footer__bottom">
                 <p>© {year} Indiana Bill Gijón. Todos los derechos reservados.</p>
                 <p className="footer__credit">
-                    Diseñado y desarrollado por{' '}
-                    <span className="footer__credit-name">Mario Álvarez</span>
+                    Hecho con <span className="footer__credit-heart" aria-label="amor">❤️</span> por{' '}
+                    <a
+                        href="https://www.linkedin.com/in/maalfer1/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="footer__credit-name"
+                    >
+                        Mario Álvarez Fernández
+                    </a>
                 </p>
             </div>
         </footer>

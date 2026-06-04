@@ -86,3 +86,12 @@
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+/* ── MOBILE: allow long button text to wrap on narrow screens ─────────────── */
+@media (max-width: 480px) {
+    .btn--lg {
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
+        padding: 0.85rem 1.5rem;
+    }
+}

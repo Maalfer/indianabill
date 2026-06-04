@@ -4,6 +4,7 @@ import { cleanAutoThemes } from '../utils/cleanThemeStorage'
 
 const ThemeContext = createContext()
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTheme() {
   const context = useContext(ThemeContext)
   if (!context) {
@@ -51,27 +52,29 @@ export function ThemeProvider({ children }) {
     return localStorage.getItem(`fontSize_${user?.id || 'guest'}`) || 'medium'
   })
 
-  useEffect(() => {
-    // When authentication status changes, load saved preferences
+  // Render-time state update when auth changes — React-recommended pattern
+  // to avoid calling setState inside a useEffect (which causes cascading renders).
+  const [prevUserId, setPrevUserId] = useState(user?.id)
+  const [prevIsAuth, setPrevIsAuth] = useState(isAuthenticated)
+
+  if (prevUserId !== user?.id || prevIsAuth !== isAuthenticated) {
+    setPrevUserId(user?.id)
+    setPrevIsAuth(isAuthenticated)
+
     if (!isAuthenticated || !user) {
-      // No user authenticated - always use light theme
       setTheme('light')
       setLanguage('es')
       setFontSize('medium')
     } else {
-      // User authenticated - load their saved preferences
       const savedTheme = localStorage.getItem(`theme_${user.id}`)
       const savedLanguage = localStorage.getItem(`language_${user.id}`)
       const savedFontSize = localStorage.getItem(`fontSize_${user.id}`)
-      
-      // Convert 'auto' to 'light' if found
       const finalTheme = savedTheme === 'auto' ? 'light' : (savedTheme || 'light')
-      
       setTheme(finalTheme)
       setLanguage(savedLanguage || 'es')
       setFontSize(savedFontSize || 'medium')
     }
-  }, [isAuthenticated, user])
+  }
 
   useEffect(() => {
     // Apply theme to document whenever it changes

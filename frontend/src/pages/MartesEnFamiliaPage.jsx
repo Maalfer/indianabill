@@ -1,21 +1,29 @@
 import Button from '../components/Button'
+import Seo from '../components/Seo'
 import './MartesEnFamiliaPage.css'
+
+const BASE = import.meta.env.BASE_URL
 
 const WA = 'https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Martes%20en%20Familia%20en%20Indiana%20Bill%20Gij%C3%B3n'
 
 export default function MartesEnFamiliaPage() {
     return (
         <>
+            <Seo
+                title="Martes en Familia — los adultos también juegan | Indiana Bill Gijón"
+                description="Cada martes en Indiana Bill Gijón los adultos también pueden bajar al parque y jugar con los niños. Horario 17:00–21:00. Consulta precios por WhatsApp."
+                path="/martes-en-familia"
+            />
             <div className="martes-hero">
                 <div className="container">
-                    <span className="martes-hero__badge">👨‍👩‍👧‍👦 Cada martes</span>
+                    <span className="martes-hero__badge">Cada martes</span>
                     <h1>Martes en Familia</h1>
                     <p>El único día de la semana en que los adultos también pueden bajar al parque y jugar junto a los niños</p>
                     <div className="martes-hero__ctas">
                         <Button href={WA} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
-                            💬 Venir este martes
+                            Venir este martes
                         </Button>
-                        <a href="tel:684657760" className="martes-hero__tel">📞 Llamar</a>
+                        <a href="tel:684657760" className="martes-hero__tel">Llamar</a>
                     </div>
                 </div>
             </div>
@@ -38,8 +46,14 @@ export default function MartesEnFamiliaPage() {
                             </p>
                         </div>
                         <div className="martes-que-es__visual">
-                            <span className="martes-que-es__emoji">👨‍👩‍👧‍👦</span>
-                            <p>Un plan familiar diferente cada martes</p>
+                            <img
+                                src={`${BASE}img/familia.jpg`}
+                                alt="Niños y familias jugando juntos en Indiana Bill Gijón"
+                                className="martes-que-es__photo"
+                                loading="lazy"
+                                width="1080"
+                                height="1350"
+                            />
                         </div>
                     </div>
                 </div>
@@ -86,14 +100,14 @@ export default function MartesEnFamiliaPage() {
                     </header>
                     <div className="martes-horario">
                         <div className="martes-horario__item">
-                            <span>📅</span>
+                            
                             <div>
                                 <strong>Día</strong>
                                 <p>Todos los martes del año</p>
                             </div>
                         </div>
                         <div className="martes-horario__item">
-                            <span>🕔</span>
+                            
                             <div>
                                 <strong>Horario</strong>
                                 <p>17:00 a 21:00</p>
@@ -134,7 +148,7 @@ export default function MartesEnFamiliaPage() {
                         <p>Escríbenos si tienes dudas sobre precios o condiciones</p>
                     </div>
                     <Button href={WA} target="_blank" rel="noopener noreferrer" variant="ghost" size="lg">
-                        💬 Escribir por WhatsApp
+                        Escribir por WhatsApp
                     </Button>
                 </div>
             </section>

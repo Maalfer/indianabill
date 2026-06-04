@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import HeroSection from '../components/HeroSection'
 import FAQAccordion from '../components/FAQAccordion'
 import Button from '../components/Button'
-import LeadForm from '../components/LeadForm'
+import Seo from '../components/Seo'
 import './HomePage.css'
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const BASE = import.meta.env.BASE_URL
 
 const WA_GENERAL = 'https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20tengo%20una%20consulta%20sobre%20Indiana%20Bill%20Gij%C3%B3n'
 
@@ -22,7 +23,7 @@ const INCLUYE = [
 ]
 
 const COMO_FUNCIONA = [
-    { num: '1', title: 'Elige la fecha', desc: 'Rellena el formulario o escríbenos con la fecha que quieres.' },
+    { num: '1', title: 'Elige la fecha', desc: 'Escríbenos por WhatsApp o llámanos con la fecha que quieres.' },
     { num: '2', title: 'Confirmamos', desc: 'Te respondemos en menos de 24 h con la disponibilidad.' },
     { num: '3', title: 'Reserva con fianza', desc: 'Pagáis una pequeña señal para confirmar la reserva.' },
     { num: '4', title: '¡A disfrutar!', desc: 'Nosotros nos encargamos del resto. Vosotros, a celebrar.' },
@@ -97,9 +98,46 @@ export default function HomePage() {
             .catch(() => {})
     }, [])
 
+    const fianzaParam = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('fianza') : null
+
     return (
         <>
+            <Seo
+                title="Cumpleaños Infantiles en Gijón | Indiana Bill — Parque cubierto 1.300 m²"
+                description="Cumpleaños infantiles en Gijón sin complicaciones. Parque cubierto de 1.300 m² en el centro: merienda, tarta, monitores e hinchables. Desde 19,50€/niño."
+                path="/"
+            />
+            {fianzaParam === 'ok' && (
+                <div className="fianza-banner fianza-banner--ok">
+                    ¡Fianza recibida! Tu reserva queda confirmada. Te esperamos en Indiana Bill
+                </div>
+            )}
+            {fianzaParam === 'cancelada' && (
+                <div className="fianza-banner fianza-banner--cancel">
+                    El pago de la fianza se canceló. Si necesitas ayuda, escríbenos por WhatsApp o llámanos.
+                </div>
+            )}
             <HeroSection />
+
+            {/* ── PRUEBA SOCIAL ──────────────────────────────────────────── */}
+            <section className="home-stats">
+                <div className="container">
+                    <div className="home-stats__grid">
+                        <div className="home-stat">
+                            <div className="home-stat__num">+25</div>
+                            <p className="home-stat__label">años celebrando<br/>cumpleaños en Gijón</p>
+                        </div>
+                        <div className="home-stat">
+                            <div className="home-stat__num">+1.000</div>
+                            <p className="home-stat__label">cumpleaños celebrados<br/>cada año</p>
+                        </div>
+                        <div className="home-stat">
+                            <div className="home-stat__num">1.300 m²</div>
+                            <p className="home-stat__label">de diversión cubierta<br/>en pleno centro</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* ── QUÉ INCLUYE ────────────────────────────────────────────── */}
             <section className="section home-incluye">
@@ -130,35 +168,23 @@ export default function HomePage() {
                         <div className="home-precios__badge">Desde 19,50€/niño</div>
                     </header>
                     <div className="home-precios__grid">
-                        <div className="home-precio-card">
+                        <Link to="/cumpleanos#menus" className="home-precio-card home-precio-card--link">
                             <h3>Menú Indy</h3>
-                            <div className="home-precio-row">
-                                <span>Entre semana</span>
-                                <strong>Ver menú</strong>
-                            </div>
-                            <div className="home-precio-row">
-                                <span>Fin de semana</span>
-                                <strong>Ver menú</strong>
-                            </div>
-                        </div>
-                        <div className="home-precio-card home-precio-card--featured">
+                            <p className="home-precio-card__desc">Merienda + bebida + tarta + regalo</p>
+                            <span className="home-precio-card__cta">Ver menú completo →</span>
+                        </Link>
+                        <Link to="/cumpleanos#menus" className="home-precio-card home-precio-card--featured home-precio-card--link">
                             <span className="home-precio-card__tag">Más completo</span>
                             <h3>Menú Super Indy</h3>
-                            <div className="home-precio-row">
-                                <span>Entre semana</span>
-                                <strong>Ver menú</strong>
-                            </div>
-                            <div className="home-precio-row">
-                                <span>Fin de semana</span>
-                                <strong>Ver menú</strong>
-                            </div>
-                        </div>
+                            <p className="home-precio-card__desc">Todo incluido con extras especiales</p>
+                            <span className="home-precio-card__cta">Ver menú completo →</span>
+                        </Link>
                     </div>
                     <div className="home-precios__cta">
                         <Button href="/cumpleanos#menus" variant="primary" size="lg">
                             Ver menús completos y precios exactos
                         </Button>
-                        <p className="home-precios__note">Mínimo 8 niños. Precio incluye parque ilimitado durante la celebración.</p>
+                        <p className="home-precios__note">El precio incluye parque ilimitado durante toda la celebración.</p>
                     </div>
                 </div>
             </section>
@@ -183,15 +209,20 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ── FORMULARIO CAPTACIÓN ────────────────────────────────────── */}
-            <section className="home-form-section">
-                <div className="container">
-                    <div className="home-form-section__header">
-                        <h2>Consulta disponibilidad ahora</h2>
-                        <p>Rellena el formulario y te respondemos en menos de 24 horas. Sin compromiso.</p>
+            {/* ── CTA WHATSAPP ────────────────────────────────────────────────────── */}
+            <section className="home-wa-cta">
+                <div className="container home-wa-cta__inner">
+                    <div className="home-wa-cta__text">
+                        <h2>¿Hablamos?</h2>
+                        <p>La forma más rápida de reservar y resolver cualquier duda. Sin formularios, sin esperas.</p>
                     </div>
-                    <div className="home-form-section__inner">
-                        <LeadForm servicio="cumpleanos" compact={false} />
+                    <div className="home-wa-cta__buttons">
+                        <Button href={WA_GENERAL} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
+                            Escribir por WhatsApp
+                        </Button>
+                        <Button href="tel:684657760" variant="outline" size="lg">
+                            Llamar ahora
+                        </Button>
                     </div>
                 </div>
             </section>
@@ -241,13 +272,43 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ── VIDEOS CORTOS ──────────────────────────────────────────── */}
-            <section className="section home-shorts">
+            {/* ── VÍDEO CUMPLEAÑOS ───────────────────────────────────────── */}
+            <section className="section home-video-cumple">
                 <div className="container">
-                    <div className="home-shorts__grid">
-                        <video className="short-video" src="https://www.indianabilldegijon.es/wp-content/uploads/2020/10/48789635_117694950095221_3144007622461847823_n.mp4" autoPlay muted loop playsInline preload="metadata" />
-                        <video className="short-video" src="https://www.indianabilldegijon.es/wp-content/uploads/2020/10/47354649_130731465055010_849112413659951726_n.mp4" autoPlay muted loop playsInline preload="metadata" />
-                        <video className="short-video" src="https://www.indianabilldegijon.es/wp-content/uploads/2020/10/107696883_774992853242507_1686557807320756955_n.mp4" autoPlay muted loop playsInline preload="metadata" />
+                    <header className="section-header">
+                        <h2>Un cumpleaños en Indiana Bill</h2>
+                        <p>Así viven los peques su gran día en Gijón</p>
+                        <div className="divider" />
+                    </header>
+                    <div className="home-video-cumple__frame">
+                        <video
+                            className="home-video-cumple__video"
+                            src={`${BASE}video/cumple.mp4`}
+                            poster={`${BASE}video/cumple.jpg`}
+                            controls
+                            playsInline
+                            preload="none"
+                            aria-label="Vídeo de un cumpleaños infantil en Indiana Bill Gijón"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* ── ASÍ ES INDIANA BILL — GALERÍA ─────────────────────────────── */}
+            <section className="section home-galeria">
+                <div className="container">
+                    <header className="section-header">
+                        <h2>Así es Indiana Bill</h2>
+                        <p>Más de 1.300 m² de diversión cubierta en el centro de Gijón</p>
+                        <div className="divider" />
+                    </header>
+                    <div className="home-galeria__grid">
+                        <img src={`${BASE}img/bolas.jpg`} alt="Parque de bolas de Indiana Bill Gijón" className="home-galeria__img" loading="lazy" width="1280" height="720" />
+                        <img src={`${BASE}img/hinchables.jpg`} alt="Hinchables en Indiana Bill Gijón" className="home-galeria__img" loading="lazy" width="1280" height="720" />
+                        <img src={`${BASE}img/mesa-cumple.jpg`} alt="Cumpleaños preparado con mesa decorada en Indiana Bill" className="home-galeria__img" loading="lazy" width="1280" height="720" />
+                        <img src={`${BASE}img/zona-pequenos.jpg`} alt="Zona de juego para los más pequeños" className="home-galeria__img" loading="lazy" width="1280" height="720" />
+                        <img src={`${BASE}img/futbol.jpg`} alt="Pista de fútbol techada en Indiana Bill Gijón" className="home-galeria__img" loading="lazy" width="1280" height="720" />
+                        <img src={`${BASE}img/comedor.jpg`} alt="Comedor y zona de celebración" className="home-galeria__img" loading="lazy" width="1280" height="720" />
                     </div>
                 </div>
             </section>
@@ -257,22 +318,22 @@ export default function HomePage() {
                 <div className="container">
                     <header className="section-header">
                         <h2>Lo que dicen las familias</h2>
-                        <p>Más de 500 cumpleaños celebrados en Indiana Bill Gijón</p>
+                        <p>Más de 1.000 cumpleaños celebrados al año en Indiana Bill Gijón</p>
                         <div className="divider" />
                     </header>
                     <div className="home-opiniones__grid">
                         <div className="home-opinion-card">
-                            <div className="home-opinion-card__stars">⭐⭐⭐⭐⭐</div>
+                            <div className="home-opinion-card__stars"></div>
                             <p>"Lo mejor fue ver a mi hijo tan feliz. El personal fue increíble y los niños no querían irse. Lo repetiríamos mil veces."</p>
                             <span>— María G., cumpleaños de 5 años</span>
                         </div>
                         <div className="home-opinion-card">
-                            <div className="home-opinion-card__stars">⭐⭐⭐⭐⭐</div>
+                            <div className="home-opinion-card__stars"></div>
                             <p>"Nos organizaron todo sin que tuviéramos que preocuparnos de nada. El parque es enorme y los niños se lo pasaron genial."</p>
                             <span>— Carlos M., cumpleaños de 7 años</span>
                         </div>
                         <div className="home-opinion-card">
-                            <div className="home-opinion-card__stars">⭐⭐⭐⭐⭐</div>
+                            <div className="home-opinion-card__stars"></div>
                             <p>"Llevamos 3 años celebrando el cumpleaños de nuestra hija aquí. No cambiaríamos Indiana Bill por nada. Los monitores son fantásticos."</p>
                             <span>— Laura P., cumpleaños de 9 años</span>
                         </div>
@@ -284,7 +345,7 @@ export default function HomePage() {
                             rel="noopener noreferrer"
                             className="home-opiniones__google-btn"
                         >
-                            <span>★</span> Ver todas las opiniones en Google
+                             Ver todas las opiniones en Google
                         </a>
                     </div>
                 </div>
@@ -311,13 +372,13 @@ export default function HomePage() {
                     </div>
                     <div className="home-cta__buttons">
                         <Button href={WA_GENERAL} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
-                            💬 WhatsApp
+                            WhatsApp
                         </Button>
                         <Button href="/cumpleanos" variant="outline" size="lg">
-                            🎂 Reservar
+                            Reservar
                         </Button>
                         <Button href="tel:684657760" variant="ghost" size="lg">
-                            📞 Llamar
+                            Llamar
                         </Button>
                     </div>
                 </div>

@@ -30,11 +30,15 @@ class UserResponse(BaseModel):
     email: str
     role: UserRole
     description: Optional[str] = None
+    verificado: bool = True
     created_at: datetime
     updated_at: Optional[datetime] = None
-    
+
     class Config:
         from_attributes = True
+
+class VerificarRequest(BaseModel):
+    token: str
 
 class UserUpdate(BaseModel):
     username: Optional[str] = None

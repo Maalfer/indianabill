@@ -23,6 +23,7 @@ import ReservasPage from './pages/ReservasPage'
 import AdminPage from './pages/AdminPage'
 import { BlogPage, BlogArticlePage } from './pages/BlogPage'
 import PanelPage from './pages/PanelPage'
+import VerificarPage from './pages/VerificarPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 export default function App() {
@@ -51,12 +52,15 @@ export default function App() {
                             {/* Auth */}
                             <Route path="/login" element={<LoginPage />} />
                             <Route path="/register" element={<RegisterPage />} />
+                            <Route path="/verificar" element={<VerificarPage />} />
 
-                            {/* Protegidas */}
+                            {/* Protegidas (cualquier usuario autenticado) */}
                             <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
                             <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
                             <Route path="/config" element={<ProtectedRoute><ConfigPage /></ProtectedRoute>} />
-                            <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+
+                            {/* Solo admin */}
+                            <Route path="/admin" element={<ProtectedRoute role="admin"><AdminPage /></ProtectedRoute>} />
 
                             <Route path="*" element={<NotFoundPage />} />
                         </Route>

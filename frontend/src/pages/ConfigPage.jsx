@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { useTheme } from '../contexts/ThemeContext'
@@ -7,17 +7,13 @@ import './ConfigPage.css'
 export default function ConfigPage() {
   const { user } = useAuth()
   const { theme, language, fontSize, updateTheme, updateLanguage, updateFontSize, resetPreferences } = useTheme()
-  const [notifications, setNotifications] = useState(true)
-  const [autoSave, setAutoSave] = useState(true)
-
-  useEffect(() => {
-    // Load other preferences from localStorage
-    const savedNotifications = localStorage.getItem('notifications') !== 'false'
-    const savedAutoSave = localStorage.getItem('autoSave') !== 'false'
-
-    setNotifications(savedNotifications)
-    setAutoSave(savedAutoSave)
-  }, [])
+  // Lazy initializers: read localStorage once on mount, no effect needed
+  const [notifications, setNotifications] = useState(
+    () => localStorage.getItem('notifications') !== 'false'
+  )
+  const [autoSave, setAutoSave] = useState(
+    () => localStorage.getItem('autoSave') !== 'false'
+  )
 
   const handleNotificationsChange = (value) => {
     setNotifications(value)

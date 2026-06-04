@@ -299,19 +299,30 @@
 .home-horario-row span:first-child { font-weight: var(--font-weight-bold); }
 .home-horario-row--closed { opacity: 0.45; }
 
-/* ── VIDEOS CORTOS ────────────────────────────────────────────────────────── */
-.home-shorts { padding: 0 !important; }
+/* ── BANNER FIANZA (vuelta de Stripe) ─────────────────────────────────────── */
+.fianza-banner {
+    text-align: center;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.98rem;
+}
+.fianza-banner--ok { background: #dcfce7; color: #15803d; }
+.fianza-banner--cancel { background: #fef3c7; color: #b45309; }
 
-.home-shorts__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+/* ── VÍDEO CUMPLEAÑOS ─────────────────────────────────────────────────────── */
+.home-video-cumple__frame {
+    max-width: 880px;
+    margin: 0 auto;
 }
 
-.short-video {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+.home-video-cumple__video {
     display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #0b0b0b;
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 }
 
 /* ── VIDEO PRINCIPAL ──────────────────────────────────────────────────────── */
@@ -444,4 +455,163 @@
     .home-horario-row { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
     .home-cta__inner { flex-direction: column; text-align: center; }
     .home-cta__buttons { justify-content: center; }
+}
+
+/* ── PRUEBA SOCIAL / ESTADÍSTICAS ────────────────────────────────────────── */
+.home-stats {
+    background: var(--color-green);
+    padding: 3rem 0;
+}
+
+.home-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+
+.home-stat__num {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: var(--font-weight-extra);
+    color: white;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.home-stat__label {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .home-stats__grid { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
+/* ── CTA WHATSAPP ────────────────────────────────────────────────────────── */
+.home-wa-cta {
+    background: var(--color-green);
+    padding: 3.5rem 0;
+}
+
+.home-wa-cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.home-wa-cta__text h2 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.home-wa-cta__text p {
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 420px;
+}
+
+.home-wa-cta__buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.home-wa-cta .btn--outline {
+    background: transparent;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.home-wa-cta .btn--outline:hover {
+    background: white;
+    color: var(--color-green);
+    border-color: white;
+}
+
+@media (max-width: 700px) {
+    .home-wa-cta__inner { flex-direction: column; text-align: center; }
+    .home-wa-cta__buttons { justify-content: center; width: 100%; }
+    .home-wa-cta__buttons .btn { flex: 1; min-width: 140px; }
+}
+
+/* ── TARJETAS DE PRECIO — LINK ────────────────────────────────────────────── */
+.home-precio-card--link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.home-precio-card--link:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.home-precio-card__desc {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1rem;
+    flex: 1;
+}
+
+.home-precio-card__cta {
+    color: var(--color-green);
+    font-weight: var(--font-weight-bold);
+    font-size: 0.95rem;
+    margin-top: auto;
+}
+
+.home-precio-card--featured .home-precio-card__cta {
+    color: #c47d00;
+}
+
+/* ── BOTONES — RESPONSIVE ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .btn--lg {
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
+        padding: 0.85rem 1.5rem;
+    }
+    .home-precios__cta .btn {
+        width: 100%;
+    }
+}
+
+/* ── GALERÍA "ASÍ ES INDIANA BILL" ───────────────────────────────────────── */
+.home-galeria { background: var(--color-white); }
+
+.home-galeria__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.home-galeria__slot,
+.home-galeria__img {
+    width: 100%;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+    display: block;
+    transition: var(--transition);
+    aspect-ratio: 16 / 10;
+}
+
+.home-galeria__img:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 900px) {
+    .home-galeria__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+    .home-galeria__grid { grid-template-columns: 1fr; }
+    .home-galeria__img { aspect-ratio: 16 / 9; }
 }

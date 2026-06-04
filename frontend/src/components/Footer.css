@@ -144,11 +144,29 @@
 .footer__credit {
     font-size: 0.8rem;
     color: #555;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer__credit-heart {
+    font-size: 0.9rem;
+    line-height: 1;
 }
 
 .footer__credit-name {
     color: var(--color-green);
     font-weight: var(--font-weight-semi);
+    text-decoration: none;
+    transition: var(--transition);
+    border-bottom: 1px solid transparent;
+}
+
+.footer__credit-name:hover {
+    color: #00c860;
+    border-bottom-color: #00c860;
 }
 
 @media (max-width: 540px) {
@@ -170,6 +188,64 @@
     .footer__inner {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-        padding-top: 2.5rem;
+        padding: 2.5rem 1.5rem 1.5rem;
     }
 }
+/* ── NEWSLETTER EN FOOTER ─────────────────────────────────────────────────── */
+.footer__newsletter {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 2rem;
+}
+
+.newsletter__title {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.newsletter__text {
+    font-size: 0.88rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    max-width: 420px;
+}
+
+.newsletter__form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 440px;
+    flex-wrap: wrap;
+}
+
+.newsletter__input {
+    flex: 1 1 200px;
+    min-width: 0;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.newsletter__input::placeholder { color: rgba(255, 255, 255, 0.5); }
+
+.newsletter__btn {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: var(--color-green, #4caf50);
+    color: #fff;
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.newsletter__btn:hover { filter: brightness(1.08); }
+.newsletter__btn:disabled { opacity: 0.6; cursor: default; }
+
+.newsletter__ok { font-size: 0.95rem; color: #8ef0a0; }
+.newsletter__err { font-size: 0.85rem; color: #ffb4b4; margin-top: 0.5rem; }
+
+.footer__facade-img:hover { opacity: 1; }

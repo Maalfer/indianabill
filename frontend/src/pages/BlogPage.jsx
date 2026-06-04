@@ -11,8 +11,8 @@ function ArticleCard({ article }) {
             <h2 className="blog-card__title">{article.titulo}</h2>
             <p className="blog-card__desc">{article.descripcion}</p>
             <div className="blog-card__meta">
-                <span>📅 {new Date(article.fecha).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                <span>⏱️ {article.tiempo_lectura} min de lectura</span>
+                <span>{new Date(article.fecha).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                <span>{article.tiempo_lectura} min de lectura</span>
             </div>
             <span className="blog-card__cta">Leer artículo →</span>
         </Link>
@@ -35,7 +35,7 @@ export function BlogPage() {
         <>
             <div className="blog-hero">
                 <div className="container">
-                    <span className="blog-hero__badge">📝 Blog de Indiana Bill</span>
+                    <span className="blog-hero__badge">Blog de Indiana Bill</span>
                     <h1>Consejos y recursos para familias</h1>
                     <p>Ideas para cumpleaños, desarrollo infantil y planes en familia en Gijón</p>
                 </div>
@@ -128,8 +128,8 @@ export function BlogArticlePage() {
                     <span className="blog-hero__badge">{article.categoria}</span>
                     <h1>{article.titulo}</h1>
                     <div className="blog-article-meta">
-                        <span>📅 {new Date(article.fecha).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                        <span>⏱️ {article.tiempo_lectura} min de lectura</span>
+                        <span>{new Date(article.fecha).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                        <span>{article.tiempo_lectura} min de lectura</span>
                     </div>
                 </div>
             </div>
@@ -144,7 +144,7 @@ export function BlogArticlePage() {
                                 <h3>¿Te ha resultado útil?</h3>
                                 <p>Reserva ahora y celebra una fiesta inolvidable en Indiana Bill Gijón.</p>
                                 <a href="/cumpleanos" className="blog-sidebar-btn">Ver cumpleaños →</a>
-                                <a href="https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20tengo%20una%20consulta" target="_blank" rel="noopener noreferrer" className="blog-sidebar-btn blog-sidebar-btn--wa">💬 Preguntar por WhatsApp</a>
+                                <a href="https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20tengo%20una%20consulta" target="_blank" rel="noopener noreferrer" className="blog-sidebar-btn blog-sidebar-btn--wa">Preguntar por WhatsApp</a>
                             </div>
 
                             <div className="blog-sidebar-card blog-sidebar-card--light">

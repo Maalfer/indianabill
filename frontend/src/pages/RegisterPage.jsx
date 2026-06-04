@@ -10,7 +10,8 @@ export default function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  
+  const [verifyMsg, setVerifyMsg] = useState(false)
+
   const { register } = useAuth()
   const navigate = useNavigate()
 
@@ -31,14 +32,18 @@ export default function RegisterPage() {
       return
     }
 
-    const result = await register(username, email, password)
-    
+    const result = await register(username, email, password, confirmPassword)
+
     if (result.success) {
-      navigate('/login')
+      if (result.user && result.user.verificado === false) {
+        setVerifyMsg(true)
+      } else {
+        navigate('/login')
+      }
     } else {
       setError(result.error)
     }
-    
+
     setLoading(false)
   }
 
@@ -57,6 +62,13 @@ export default function RegisterPage() {
             </div>
           )}
 
+          {verifyMsg ? (
+            <div className="auth-verify-msg">
+              <p>¡Cuenta creada! Te hemos enviado un email a <strong>{email}</strong> para verificar tu dirección.</p>
+              <p>Revisa tu bandeja de entrada (y la carpeta de spam) y pulsa el enlace para activar tu cuenta.</p>
+              <Link to="/login" className="auth-link">Ir a iniciar sesión</Link>
+            </div>
+          ) : (
           <form className="auth-form-horizontal" onSubmit={handleSubmit}>
             <div className="auth-form-left">
               <div className="form-group">
@@ -121,6 +133,7 @@ export default function RegisterPage() {
               </button>
             </div>
           </form>
+          )}
 
           <div className="auth-footer">
             <p>

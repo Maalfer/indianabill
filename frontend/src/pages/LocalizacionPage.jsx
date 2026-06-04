@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Button from '../components/Button'
+import Seo from '../components/Seo'
 import './LocalizacionPage.css'
 
 export default function LocalizacionPage() {
@@ -29,10 +30,15 @@ export default function LocalizacionPage() {
     }, []);
     return (
         <>
+            <Seo
+                title="Cómo llegar — Indiana Bill Gijón (C/ Espronceda 17)"
+                description="Encuentra Indiana Bill en el centro de Gijón: C/ Espronceda 17. Parque infantil cubierto con cumpleaños, juego libre y fiestas privadas. Mapa y contacto."
+                path="/localizacion"
+            />
             {/* Page header */}
             <div className="localizacion-hero">
                 <div className="container">
-                    <span className="localizacion-hero__badge">📍 Estamos aquí</span>
+                    <span className="localizacion-hero__badge">Estamos aquí</span>
                     <h1>Localización</h1>
                     <p>Al encontrarnos en un lugar muy céntrico de Gijón hay muchas formas de llegar a nuestro local</p>
                 </div>
@@ -95,7 +101,7 @@ export default function LocalizacionPage() {
             <section className="section localizacion-bus">
                 <div className="container">
                     <header className="section-header">
-                        <h2>¿Qué buses llegan hasta Indiana Bill? 🚌</h2>
+                        <h2>¿Qué buses llegan hasta Indiana Bill?</h2>
                         <p>Si vienes en bus no te preocupes, ¡las paradas están a solo 3 minutos andando!</p>
                         <div className="divider" />
                     </header>
@@ -180,7 +186,7 @@ export default function LocalizacionPage() {
                                 variant="outline"
                                 size="lg"
                             >
-                                📞 Llamar ahora
+                                Llamar ahora
                             </Button>
                             <Button
                                 href="https://api.whatsapp.com/send?phone=34684657760&text=%C2%A1Hola!%20Tengo%20una%20duda%20sobre%20c%C3%B3mo%20llegar%20a%20Indiana%20Bill%20Gij%C3%B3n%20%F0%9F%97%BA%EF%B8%8F"
@@ -189,7 +195,7 @@ export default function LocalizacionPage() {
                                 variant="primary"
                                 size="lg"
                             >
-                                💬 WhatsApp
+                                WhatsApp
                             </Button>
                         </div>
                     </div>

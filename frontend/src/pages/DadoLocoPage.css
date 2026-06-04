@@ -130,5 +130,6 @@
 
 @media (max-width: 600px) {
     .dado-condiciones__grid { grid-template-columns: 1fr; }
-    .dado-cta__inner { flex-direction: column; text-align: center; }
+    .dado-cta__inner { flex-direction: column; text-align: center; align-items: stretch; }
+    .dado-cta__inner .btn { width: 100%; justify-content: center; }
 }

@@ -6,6 +6,7 @@ import './LeadForm.css'
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 const WA_BASE = 'https://api.whatsapp.com/send?phone=34684657760&text='
+const TODAY = new Date().toISOString().split('T')[0]
 
 export default function LeadForm({ servicio = 'cumpleanos', compact = false }) {
     const [form, setForm] = useState({
@@ -17,14 +18,31 @@ export default function LeadForm({ servicio = 'cumpleanos', compact = false }) {
         comentarios: '',
     })
     const [status, setStatus] = useState('idle') // idle | loading | ok | error
-const [waUrl, setWaUrl] = useState('')
+    const [waUrl, setWaUrl] = useState('')
+    const [errorMsg, setErrorMsg] = useState('')
 
     const handleChange = (e) => {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
+    const validate = () => {
+        if (!form.nombre.trim()) return 'El nombre es obligatorio'
+        const phone = form.telefono.replace(/\s/g, '')
+        if (!phone) return 'El teléfono es obligatorio'
+        if (!/^[0-9+]{9,15}$/.test(phone)) return 'Introduce un teléfono válido (9 dígitos)'
+        if (!form.fecha_cumpleanos) return 'La fecha aproximada es obligatoria'
+        if (!form.num_ninos || Number(form.num_ninos) < 1) return 'Indica el número de niños'
+        return null
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const validationError = validate()
+        if (validationError) {
+            setErrorMsg(validationError)
+            return
+        }
+        setErrorMsg('')
         setStatus('loading')
         try {
             const res = await fetch(`${API}/api/leads/`, {
@@ -68,7 +86,7 @@ const [waUrl, setWaUrl] = useState('')
                 <p>Hemos recibido tu consulta. Haz clic abajo para confirmarnos los detalles por WhatsApp y te respondemos enseguida.</p>
                 {waUrl && (
                     <a href={waUrl} target="_blank" rel="noopener noreferrer" className="lead-form__wa-link">
-                        💬 Abrir WhatsApp ahora
+                        Abrir WhatsApp ahora
                     </a>
                 )}
                 <p className="lead-form__success-alt">O llámanos al <a href="tel:684657760">684 657 760</a></p>
@@ -128,7 +146,7 @@ const [waUrl, setWaUrl] = useState('')
                         value={form.fecha_cumpleanos}
                         onChange={handleChange}
                         required
-                        min={new Date().toISOString().split('T')[0]}
+                        min={TODAY}
                     />
                 </div>
                 <div className="lead-form__field">
@@ -159,8 +177,11 @@ const [waUrl, setWaUrl] = useState('')
                     </div>
                 )}
             </div>
-            {status === 'error' && (
-                <p className="lead-form__error">Algo salió mal. Llámanos al <a href="tel:684657760">684 657 760</a> o escríbenos por WhatsApp.</p>
+            {(status === 'error' || errorMsg) && (
+                <p className="lead-form__error" role="alert">
+                    {errorMsg || 'Algo salió mal. Llámanos al '}
+                    {!errorMsg && <><a href="tel:684657760">684 657 760</a> o escríbenos por WhatsApp.</>}
+                </p>
             )}
             <Button
                 type="submit"
@@ -169,7 +190,7 @@ const [waUrl, setWaUrl] = useState('')
                 fullWidth
                 disabled={status === 'loading'}
             >
-                {status === 'loading' ? 'Enviando…' : '📅 Consultar disponibilidad'}
+                {status === 'loading' ? 'Enviando…' : 'Consultar disponibilidad'}
             </Button>
             <p className="lead-form__note">Responderemos en menos de 24 horas. Sin compromiso.</p>
         </form>

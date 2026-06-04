@@ -367,4 +367,8 @@
         flex-direction: column;
         width: 100%;
     }
+    .cta-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
 }

@@ -59,3 +59,12 @@
     color: var(--color-gray);
     line-height: 1.7;
 }
+@media (max-width: 480px) {
+    .faq__question {
+        padding: 1rem 1rem;
+        font-size: 0.95rem;
+    }
+    .faq__answer p {
+        padding: 0 1rem 1rem;
+    }
+}

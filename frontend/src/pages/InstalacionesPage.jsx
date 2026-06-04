@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import Button from '../components/Button'
+import Seo from '../components/Seo'
 import './InstalacionesPage.css'
+
+const BASE = import.meta.env.BASE_URL
 
 const ZONAS = [
     { icon: '⚽', title: 'Cancha de fútbol', desc: 'Pista techada para partidos entre amigos o durante las celebraciones' },
@@ -16,9 +19,14 @@ const ZONAS = [
 export default function InstalacionesPage() {
     return (
         <>
+            <Seo
+                title="Instalaciones — parque infantil de 1.300 m² en Gijón | Indiana Bill"
+                description="Más de 1.300 m² cubiertos en el centro de Gijón: toboganes, hinchables, parque de bolas, pista de fútbol, cafetería y comedor. El parque infantil más grande de Asturias."
+                path="/instalaciones"
+            />
             <div className="instalaciones-hero">
                 <div className="container">
-                    <span className="instalaciones-hero__badge">🏟️ Más de 1.300 m²</span>
+                    <span className="instalaciones-hero__badge">Más de 1.300 m²</span>
                     <h1>Nuestras instalaciones</h1>
                     <p>El parque infantil cubierto más grande de Asturias. Descubre todo lo que tenemos para ti.</p>
                 </div>
@@ -77,15 +85,14 @@ export default function InstalacionesPage() {
                         <div className="divider" />
                     </header>
                     <div className="instalaciones-video">
-                        <iframe
-                            width="100%"
-                            height="500"
-                            src="https://www.youtube.com/embed/llKb4NkS2tU"
-                            title="Indiana Bill Gijón — Tour instalaciones"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className="video-iframe"
+                        <video
+                            className="instalaciones-video__video"
+                            src={`${BASE}video/cumple.mp4`}
+                            poster={`${BASE}video/cumple.jpg`}
+                            controls
+                            playsInline
+                            preload="none"
+                            aria-label="Tour por las instalaciones de Indiana Bill Gijón"
                         />
                     </div>
                 </div>
@@ -100,17 +107,17 @@ export default function InstalacionesPage() {
                     </header>
                     <div className="instalaciones-ctas__grid">
                         <Link to="/cumpleanos" className="instalaciones-cta-card instalaciones-cta-card--green">
-                            <span>🎂</span>
+                            
                             <h3>Celebrar un cumpleaños infantil</h3>
                             <p>Ver menús, precios y disponibilidad</p>
                         </Link>
                         <Link to="/juego-libre" className="instalaciones-cta-card instalaciones-cta-card--blue">
-                            <span>🎮</span>
+                            
                             <h3>Venir a jugar</h3>
                             <p>Ver horarios y precios de juego libre</p>
                         </Link>
                         <Link to="/fiestas-privadas" className="instalaciones-cta-card instalaciones-cta-card--red">
-                            <span>🎉</span>
+                            
                             <h3>Organizar una fiesta privada</h3>
                             <p>Adultos, despedidas, grupos y más</p>
                         </Link>

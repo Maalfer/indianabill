@@ -1,6 +1,8 @@
 import Button from '../components/Button'
-import LeadForm from '../components/LeadForm'
+import Seo from '../components/Seo'
 import './FiestasPrivadasPage.css'
+
+const BASE = import.meta.env.BASE_URL
 
 const TIPOS = [
     { icon: '🎂', title: 'Cumpleaños adolescentes', desc: 'Celebra con tus amigos de una forma diferente. Sin límite de diversión.' },
@@ -16,19 +18,21 @@ const WA = 'https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20quier
 export default function FiestasPrivadasPage() {
     return (
         <>
+            <Seo
+                title="Fiestas privadas en Gijón: adultos, despedidas y grupos | Indiana Bill"
+                description="Reserva el parque para tu grupo en Gijón: despedidas, cumpleaños de adolescentes, grupos y fiestas de adultos. Desde 8€/hora. Consulta por WhatsApp."
+                path="/fiestas-privadas"
+            />
             <div className="privadas-hero">
                 <div className="container">
-                    <span className="privadas-hero__badge">🎉 Reserva exclusiva del local</span>
+                    <span className="privadas-hero__badge">Reserva exclusiva del local</span>
                     <h1>Fiestas privadas en Gijón</h1>
                     <p>Un plan diferente para jugar, reír y celebrar en grupo dentro del parque de bolas más grande de Asturias</p>
                     <div className="privadas-hero__ctas">
-                        <Button href="#formulario-privadas" variant="primary" size="lg">
-                            📅 Pedir información
+                        <Button href={WA} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
+                            Pedir información por WhatsApp
                         </Button>
-                        <Button href={WA} target="_blank" rel="noopener noreferrer" variant="outline" size="lg">
-                            💬 WhatsApp
-                        </Button>
-                        <a href="tel:684657760" className="privadas-hero__tel">📞 Llamar</a>
+                        <a href="tel:684657760" className="privadas-hero__tel">Llamar</a>
                     </div>
                 </div>
             </div>
@@ -52,6 +56,28 @@ export default function FiestasPrivadasPage() {
                 </div>
             </section>
 
+            {/* VÍDEO — el local para grupos y adultos */}
+            <section className="section privadas-video">
+                <div className="container">
+                    <header className="section-header">
+                        <h2>El local también es para vosotros</h2>
+                        <p>Adultos, grupos, despedidas y celebraciones diferentes en 1.300 m²</p>
+                        <div className="divider" />
+                    </header>
+                    <div className="privadas-video__frame">
+                        <video
+                            className="privadas-video__video"
+                            src={`${BASE}video/privadas.mp4`}
+                            poster={`${BASE}video/privadas.jpg`}
+                            controls
+                            playsInline
+                            preload="none"
+                            aria-label="Vídeo de fiestas privadas para adultos y grupos en Indiana Bill Gijón"
+                        />
+                    </div>
+                </div>
+            </section>
+
             <section className="section privadas-opciones">
                 <div className="container">
                     <header className="section-header">
@@ -59,6 +85,11 @@ export default function FiestasPrivadasPage() {
                         <p>Elige la modalidad que mejor encaja con tu grupo</p>
                         <div className="divider" />
                     </header>
+                    <p className="privadas-opciones__intro">
+                        Las fiestas privadas se realizan siempre con reserva previa y fuera del horario comercial infantil.
+                        Podemos adaptar el horario según disponibilidad del local, tipo de evento y organización interna,
+                        así que si tenéis una idea concreta, consultadnos por WhatsApp o teléfono.
+                    </p>
                     <div className="privadas-opciones__grid">
                         <div className="privadas-opcion">
                             <div className="privadas-opcion__header">
@@ -70,7 +101,6 @@ export default function FiestasPrivadasPage() {
                                 <li>Reserva previa necesaria</li>
                                 <li>Mínimo 8 personas</li>
                                 <li>Mínimo 2 horas</li>
-                                <li>Horario: 14:00 a 16:00</li>
                             </ul>
                         </div>
                         <div className="privadas-opcion privadas-opcion--featured">
@@ -84,10 +114,12 @@ export default function FiestasPrivadasPage() {
                                 <li>Mínimo 8 personas</li>
                                 <li>3 horas de juego incluidas</li>
                                 <li>Comida incluida</li>
-                                <li>Horario: 13:00 a 16:00</li>
                             </ul>
                         </div>
                     </div>
+                    <p className="privadas-opciones__nota">
+                        Los horarios pueden variar según disponibilidad. Consúltanos y vemos la mejor opción para vuestro grupo.
+                    </p>
                 </div>
             </section>
 
@@ -123,22 +155,30 @@ export default function FiestasPrivadasPage() {
                 </div>
             </section>
 
-            {/* FORMULARIO */}
-            <section className="section privadas-form" id="formulario-privadas">
+            {/* CONTACTO */}
+            <section className="section privadas-form" id="contacto-privadas">
                 <div className="container">
                     <div className="privadas-form__layout">
                         <div className="privadas-form__left">
                             <h2>Cuéntanos qué celebráis</h2>
-                            <p>Rellena el formulario y te preparamos una propuesta a medida en menos de 24 horas.</p>
+                            <p>Escríbenos por WhatsApp o llámanos y te preparamos una propuesta a medida para vuestro grupo.</p>
                             <ul className="privadas-form__bullets">
-                                <li>🎉 Despedidas, cumpleaños adolescentes, grupos</li>
-                                <li>👥 Mínimo 8 personas</li>
-                                <li>🏠 Espacio privado y exclusivo</li>
-                                <li>📅 Consulta disponibilidad sin compromiso</li>
+                                <li>Despedidas, cumpleaños adolescentes, grupos</li>
+                                <li>Mínimo 8 personas</li>
+                                <li>Espacio privado y exclusivo</li>
+                                <li>Consulta disponibilidad sin compromiso</li>
                             </ul>
                         </div>
-                        <div>
-                            <LeadForm servicio="fiestas_privadas" />
+                        <div className="privadas-form__ctas">
+                            <Button href={WA} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
+                                Consultar por WhatsApp
+                            </Button>
+                            <Button href="tel:684657760" variant="outline" size="lg">
+                                Llamar al 684 657 760
+                            </Button>
+                            <Button href="/localizacion" variant="ghost" size="lg">
+                                Cómo llegar al local
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -151,7 +191,7 @@ export default function FiestasPrivadasPage() {
                         <p>Cuéntanos qué celebráis y te preparamos una propuesta</p>
                     </div>
                     <Button href={WA} target="_blank" rel="noopener noreferrer" variant="ghost" size="lg">
-                        💬 Consultar por WhatsApp
+                        Consultar por WhatsApp
                     </Button>
                 </div>
             </section>

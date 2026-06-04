@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://indianabill.duckdns.org/sitemap.xml

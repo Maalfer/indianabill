@@ -1,145 +1,46 @@
-import { useState } from 'react'
 import Button from '../components/Button'
+import Seo from '../components/Seo'
 import './ContactPage.css'
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
-
-const INITIAL = { nombre: '', email: '', telefono: '', mensaje: '', servicio: '' }
+const WA = 'https://api.whatsapp.com/send?phone=34684657760&text=Hola%2C%20tengo%20una%20consulta%20sobre%20Indiana%20Bill%20Gij%C3%B3n'
 
 export default function ContactPage() {
-    const [form, setForm] = useState(INITIAL)
-    const [status, setStatus] = useState('idle') // idle | sending | ok | error
-
-    const handleChange = (e) =>
-        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        setStatus('sending')
-        try {
-            await fetch(`${API}/api/leads/`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    nombre: form.nombre,
-                    email: form.email || undefined,
-                    telefono: form.telefono || undefined,
-                    comentarios: form.mensaje || undefined,
-                    servicio: form.servicio || 'contacto',
-                    origen: 'web',
-                }),
-            })
-        } catch {
-            // silently continue — WA fallback ensures the inquiry is not lost
-        }
-        const lines = [`Hola, soy ${form.nombre} (${form.email})`]
-        if (form.telefono) lines.push(`Teléfono: ${form.telefono}`)
-        if (form.servicio) lines.push(`Servicio: ${form.servicio}`)
-        lines.push('', form.mensaje)
-        const waUrl = `https://api.whatsapp.com/send?phone=34684657760&text=${encodeURIComponent(lines.join('\n'))}`
-        window.open(waUrl, '_blank')
-        setStatus('ok')
-    }
-
     return (
         <>
+            <Seo
+                title="Contacto — Indiana Bill Gijón | WhatsApp y teléfono"
+                description="Contacta con Indiana Bill Gijón por WhatsApp, teléfono (684 657 760) o en C/ Espronceda 17. Reservas de cumpleaños, fiestas privadas y consultas."
+                path="/contacto"
+            />
             {/* Hero */}
             <div className="contact-hero">
                 <div className="container">
-                    <span className="contact-hero__badge">📩 Estamos aquí para ayudarte</span>
+                    <span className="contact-hero__badge">Estamos aquí para ayudarte</span>
                     <h1>Contacta con nosotros</h1>
-                    <p>Reservas, preguntas o lo que necesites — respondemos en menos de 24h</p>
+                    <p>La forma más rápida de reservar o resolver dudas es por WhatsApp, teléfono o pasándote por el local</p>
                 </div>
             </div>
 
             <section className="section">
                 <div className="container contact-layout">
-                    {/* Form */}
-                    <div className="contact-form-wrap">
-                        <h2>Envíanos un mensaje</h2>
-
-                        {status === 'ok' ? (
-                            <div className="contact-success">
-                                <span className="contact-success__icon">🎉</span>
-                                <h3>¡Mensaje enviado!</h3>
-                                <p>Nos pondremos en contacto contigo muy pronto.</p>
-                                <Button onClick={() => { setForm(INITIAL); setStatus('idle') }} variant="primary">
-                                    Enviar otro mensaje
-                                </Button>
-                            </div>
-                        ) : (
-                            <form className="contact-form" onSubmit={handleSubmit} noValidate>
-                                <div className="contact-form__row">
-                                    <label>
-                                        Nombre *
-                                        <input
-                                            type="text"
-                                            name="nombre"
-                                            value={form.nombre}
-                                            onChange={handleChange}
-                                            placeholder="Tu nombre"
-                                            required
-                                        />
-                                    </label>
-                                    <label>
-                                        Email *
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={form.email}
-                                            onChange={handleChange}
-                                            placeholder="tu@email.com"
-                                            required
-                                        />
-                                    </label>
-                                </div>
-
-                                <div className="contact-form__row">
-                                    <label>
-                                        Teléfono
-                                        <input
-                                            type="tel"
-                                            name="telefono"
-                                            value={form.telefono}
-                                            onChange={handleChange}
-                                            placeholder="+34 600 000 000"
-                                        />
-                                    </label>
-                                    <label>
-                                        Servicio de interés
-                                        <select name="servicio" value={form.servicio} onChange={handleChange}>
-                                            <option value="">Selecciona uno...</option>
-                                            <option value="cumpleanos-infantiles">Cumpleaños infantiles</option>
-                                            <option value="fiestas-adultos">Fiestas para adultos</option>
-                                            <option value="ven-a-jugar">Ven a jugar</option>
-                                            <option value="bono-vip">Bono VIP</option>
-                                        </select>
-                                    </label>
-                                </div>
-
-                                <label>
-                                    Mensaje *
-                                    <textarea
-                                        name="mensaje"
-                                        value={form.mensaje}
-                                        onChange={handleChange}
-                                        placeholder="Cuéntanos qué necesitas..."
-                                        rows={5}
-                                        required
-                                    />
-                                </label>
-
-                                <Button
-                                    type="submit"
-                                    variant="primary"
-                                    size="lg"
-                                    fullWidth
-                                    disabled={status === 'sending'}
-                                >
-                                    {status === 'sending' ? 'Enviando...' : '🚀 Enviar mensaje'}
-                                </Button>
-                            </form>
-                        )}
+                    {/* CTAs principales */}
+                    <div className="contact-cta-wrap">
+                        <h2>¿Hablamos?</h2>
+                        <p className="contact-cta-wrap__lead">
+                            Escríbenos por WhatsApp, llámanos o ven a vernos. Te respondemos rápido y te ayudamos
+                            con cumpleaños, fiestas privadas, juego libre o cualquier consulta.
+                        </p>
+                        <div className="contact-cta-wrap__buttons">
+                            <Button href={WA} target="_blank" rel="noopener noreferrer" variant="primary" size="lg" fullWidth>
+                                Escribir por WhatsApp
+                            </Button>
+                            <Button href="tel:684657760" variant="outline" size="lg" fullWidth>
+                                Llamar al 684 657 760
+                            </Button>
+                            <Button href="/localizacion" variant="ghost" size="lg" fullWidth>
+                                Cómo llegar al local
+                            </Button>
+                        </div>
                     </div>
 
                     {/* Info column */}
@@ -162,31 +63,20 @@ export default function ContactPage() {
                                 </div>
                             </div>
                             <div className="contact-info__item">
-                                <span className="contact-info__icon">✉️</span>
+                                <span className="contact-info__icon">💬</span>
                                 <div>
-                                    <strong>Email</strong>
-                                    <p>info@indianabillgijon.es</p>
+                                    <strong>WhatsApp</strong>
+                                    <p><a href={WA} target="_blank" rel="noopener noreferrer">684 657 760</a></p>
                                 </div>
                             </div>
                             <div className="contact-info__item">
                                 <span className="contact-info__icon">🕐</span>
                                 <div>
-                                    <strong>Horario de oficina</strong>
-                                    <p>Lun–Vie: 10:00 – 20:00</p>
+                                    <strong>Horario</strong>
+                                    <p>Mar y Jue: 17:00–21:00<br />Vie, Sáb y vísperas: 17:00–21:30<br />Dom y festivos: 17:00–21:00<br />Lun: cerrado</p>
                                 </div>
                             </div>
                         </div>
-
-                        <Button
-                            href="https://wa.me/34684657760"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            variant="primary"
-                            size="lg"
-                            fullWidth
-                        >
-                            💬 WhatsApp directo
-                        </Button>
                     </aside>
                 </div>
             </section>
